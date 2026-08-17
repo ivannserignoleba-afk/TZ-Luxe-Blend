@@ -1,1527 +1,1273 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TZ LUXE | Brush Care & Luxury Beauty Essentials</title>
-  <meta name="description" content="TZ LUXE, luxe beauté et hygiène des pinceaux. Bundle kits, spray nettoyant rapide, accessoires premium, formations et accessoires de voyage." />
-  <style>
-    :root {
-      --bg: #f8f3ef;
-      --panel: #fffdfb;
-      --text: #1e1a17;
-      --muted: #665d58;
-      --line: #eaded0;
-      --gold: #d3a86d;
-      --gold-deep: #9d7742;
-      --dark: #1a1413;
-      --soft: #f3e8de;
-      --green: #224d41;
-      --shadow: 0 22px 56px rgba(28, 21, 17, 0.12);
-    }
-
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: linear-gradient(180deg, #fdf9f6 0%, #f4eee8 100%);
-      color: var(--text);
-      line-height: 1.6;
-    }
-    a { color: inherit; text-decoration: none; }
-    img { display: block; max-width: 100%; }
-
-    .container {
-      width: min(1200px, calc(100% - 28px));
-      margin: 0 auto;
-    }
-
-    .topbar {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      background: rgba(17, 14, 13, 0.96);
-      color: #fff;
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-    }
-
-    .topbar-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 18px;
-      padding: 12px 0;
-    }
-
-    .brand {
-      font-family: Georgia, serif;
-      font-size: 1.7rem;
-      letter-spacing: 0.08em;
-      font-weight: 700;
-    }
-
-    .nav {
-      display: flex;
-      align-items: center;
-      gap: 24px;
-      font-size: 0.72rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.75);
-    }
-
-    .nav a:hover { color: #fff; }
-
-    .button {
-      display: inline-flex;
-      justify-content: center;
-      align-items: center;
-      border-radius: 999px;
-      border: none;
-      padding: 15px 28px;
-      font-weight: 700;
-      cursor: pointer;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-    .button:hover { transform: translateY(-2px); }
-    .button-primary {
-      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-deep) 100%);
-      color: #fff;
-      box-shadow: 0 14px 26px rgba(157,119,66,0.28);
-    }
-    .button-secondary {
-      background: rgba(255,255,255,0.12);
-      border: 1px solid rgba(255,255,255,0.22);
-      color: #fff;
-    }
-
-    .hero {
-      padding: 70px 0 36px;
-      background:
-        radial-gradient(circle at 12% 12%, rgba(211,168,109,0.22), transparent 18%),
-        linear-gradient(180deg, rgba(255,255,255,0.4), rgba(243,232,222,0.7));
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.12fr 0.88fr;
-      align-items: center;
-      gap: 44px;
-    }
-
-    .eyebrow {
-      display: inline-block;
-      background: var(--dark);
-      color: #fff;
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      font-size: 0.68rem;
-      padding: 9px 14px;
-      border-radius: 999px;
-      margin-bottom: 22px;
-    }
-
-    h1 {
-      margin: 0 0 18px;
-      font-family: Georgia, serif;
-      font-size: clamp(2.8rem, 3vw + 1.2rem, 5rem);
-      line-height: 0.96;
-      letter-spacing: -0.06em;
-    }
-
-    .hero-copy p {
-      max-width: 620px;
-      margin: 0 0 28px;
-      font-size: 1.08rem;
-      color: var(--muted);
-    }
-
-    .cta-row {
-      display: flex;
-      gap: 16px;
-      flex-wrap: wrap;
-      margin-bottom: 28px;
-    }
-
-    .meta-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
-
-    .meta-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(255,255,255,0.55);
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      padding: 10px 14px;
-    }
-
-    .product-card {
-      background: linear-gradient(180deg, #fffdfb 0%, #f2e6dc 100%);
-      border: 1px solid var(--line);
-      border-radius: 30px;
-      padding: 18px;
-      box-shadow: var(--shadow);
-    }
-
-    .product-visual {
-      position: relative;
-      height: 670px;
-      overflow: hidden;
-      border-radius: 24px;
-      background: linear-gradient(180deg, #f1e7df 0%, #f9f5f2 100%);
-      border: 1px solid var(--line);
-    }
-
-    .glow {
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at 50% 25%, rgba(255,255,255,0.89), transparent 35%);
-    }
-
-    .price-tag {
-      position: absolute;
-      top: 18px;
-      right: 18px;
-      z-index: 3;
-      background: var(--dark);
-      color: #fff;
-      border-radius: 12px;
-      padding: 12px 15px;
-      font-weight: 700;
-      box-shadow: 0 10px 26px rgba(17,14,13,0.22);
-    }
-
-    .spray {
-      position: absolute;
-      bottom: 42px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 290px;
-      height: 430px;
-      background: linear-gradient(180deg, #f8f4ee 0%, #eadfcf 100%);
-      border-radius: 38px 38px 28px 28px;
-      border: 1px solid rgba(40,30,26,0.08);
-      box-shadow: 0 28px 52px rgba(52,38,31,0.18);
-    }
-
-    .spray::before {
-      content: "";
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      top: -82px;
-      width: 146px;
-      height: 116px;
-      border-radius: 22px 22px 18px 18px;
-      background: linear-gradient(180deg, #efdfc1 0%, #d3a86d 100%);
-      border: 1px solid rgba(40,30,26,0.06);
-    }
-
-    .spray::after {
-      content: "";
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      bottom: 18px;
-      width: 130px;
-      height: 130px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.35);
-      filter: blur(12px);
-    }
-
-    .label {
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      bottom: 118px;
-      width: 188px;
-      text-align: center;
-      background: rgba(255,255,255,0.8);
-      border: 1px solid rgba(26,20,19,0.05);
-      border-radius: 18px;
-      padding: 18px 14px;
-      z-index: 2;
-    }
-    .label strong {
-      display: block;
-      font-family: Georgia, serif;
-      font-size: 1.6rem;
-      letter-spacing: 0.04em;
-    }
-    .label span {
-      display: block;
-      margin-top: 6px;
-      color: var(--muted);
-      font-size: 0.7rem;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-    }
-
-    .section {
-      padding: 80px 0;
-    }
-
-    .section-head {
-      text-align: center;
-      margin-bottom: 28px;
-    }
-    .section-head h2 {
-      margin: 0 0 14px;
-      font-family: Georgia, serif;
-      font-size: clamp(2rem, 2vw + 1.1rem, 3rem);
-      letter-spacing: -0.05em;
-    }
-    .section-head p {
-      max-width: 760px;
-      margin: 0 auto;
-      color: var(--muted);
-      font-size: 1.04rem;
-    }
-
-    .features-grid,
-    .bundle-grid,
-    .idea-grid,
-    .steps-grid,
-    .testimonials-grid,
-    .faq-grid{
-      display: grid;
-      gap: 22px;
-    }
-
-    .features-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-    .bundle-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-    .idea-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .steps-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-    .testimonials-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-    .faq-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-
-    .card, .bundle-card, .idea-card, .quote, .faq-item {
-      background: rgba(255,255,255,0.72);
-      border: 1px solid var(--line);
-      border-radius: 24px;
-      padding: 26px 22px;
-      box-shadow: 0 10px 30px rgba(36, 26, 20, 0.03);
-    }
-
-    .icon {
-      width: 58px;
-      height: 58px;
-      display: grid;
-      place-items: center;
-      margin-bottom: 16px;
-      border-radius: 18px;
-      font-size: 1.7rem;
-      background: linear-gradient(135deg, rgba(211,168,109,0.16), rgba(157,119,66,0.08));
-    }
-
-    .card h3, .bundle-card h3, .idea-card h3, .faq-item h4 {
-      margin: 0 0 10px;
-      font-size: 1.4rem;
-    }
-
-    .card p, .bundle-card p, .idea-card p, .faq-item p, .quote p {
-      margin: 0;
-      color: var(--muted);
-    }
-
-    .market-wrap {
-      background: linear-gradient(180deg, #fff, rgba(255,255,255,0.7));
-      border: 1px solid var(--line);
-      border-radius: 30px;
-      padding: 30px;
-    }
-
-    .market-grid {
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 28px;
-      align-items: center;
-    }
-
-    .market-grid ul {
-      padding-left: 20px;
-      margin: 20px 0 0;
-      color: var(--muted);
-    }
-
-    .market-panel {
-      background: linear-gradient(145deg, #201916 0%, #3d2d29 100%);
-      color: white;
-      border-radius: 24px;
-      padding: 26px 22px;
-    }
-
-    .market-panel h3 {
-      margin: 0 0 18px;
-      font-size: 1.2rem;
-    }
-
-    .score-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 0.95rem;
-      margin-bottom: 8px;
-      color: rgba(255,255,255,0.76);
-    }
-    .score-bar {
-      width: 100%;
-      height: 8px;
-      background: rgba(255,255,255,0.12);
-      border-radius: 999px;
-      overflow: hidden;
-      margin-bottom: 16px;
-    }
-    .score-bar span {
-      height: 100%;
-      display: block;
-      border-radius: inherit;
-      background: linear-gradient(90deg, #d9b989, #f4d39d);
-    }
-
-    .bundle-card {
-      background: #fff;
-      position: relative;
-      overflow: hidden;
-    }
-    .bundle-card.highlight {
-      background: linear-gradient(150deg, #1d1716 0%, #3b2d29 100%);
-      color: #fff;
-      transform: translateY(-8px);
-      border-color: rgba(211,168,109,0.18);
-    }
-    .bundle-card.highlight p,
-    .bundle-card.highlight li {
-      color: rgba(255,255,255,0.78);
-    }
-
-    .bundle-tag {
-      display: inline-block;
-      background: rgba(211,168,109,0.12);
-      color: var(--gold-deep);
-      border: 1px solid rgba(211,168,109,0.24);
-      border-radius: 999px;
-      padding: 7px 12px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      font-size: 0.68rem;
-      font-weight: 700;
-      margin-bottom: 14px;
-    }
-
-    .bundle-card.highlight .bundle-tag {
-      background: rgba(255,255,255,0.06);
-      color: #f4d39d;
-      border-color: rgba(255,255,255,0.08);
-    }
-
-    .bundle-card h3 {
-      font-size: 1.9rem;
-      font-family: Georgia, serif;
-      margin-bottom: 4px;
-    }
-    .bundle-price {
-      font-size: 2.2rem;
-      font-weight: 800;
-      letter-spacing: -0.06em;
-      margin: 12px 0 10px;
-    }
-
-    .bundle-card ul {
-      margin: 18px 0 22px;
-      padding: 0;
-      list-style: none;
-      display: grid;
-      gap: 10px;
-    }
-    .bundle-card li::before {
-      content: "✓";
-      color: var(--gold);
-      font-weight: 700;
-      margin-right: 10px;
-    }
-    .bundle-card.highlight li::before { color: #f4d39d; }
-
-    .idea-card {
-      display: flex;
-      flex-direction: column;
-      height: 100%;
-    }
-    .idea-num {
-      width: 52px;
-      height: 52px;
-      display: grid;
-      place-items: center;
-      border-radius: 14px;
-      background: linear-gradient(135deg, rgba(211,168,109,0.16), rgba(157,119,66,0.09));
-      margin-bottom: 16px;
-      font-weight: 800;
-      color: var(--gold-deep);
-    }
-
-    .idea-card small {
-      display: inline-block;
-      margin-top: 10px;
-      margin-bottom: 12px;
-      color: var(--gold-deep);
-      font-weight: 700;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-    }
-
-    .paint-list {
-      margin: 12px 0 0;
-      padding-left: 18px;
-      color: var(--muted);
-    }
-    .paint-list li { margin-bottom: 8px; }
-
-    .step-box {
-      text-align: center;
-      padding: 12px 10px;
-    }
-    .step-step {
-      width: 72px;
-      height: 72px;
-      margin: 0 auto 18px;
-      display: grid;
-      place-items: center;
-      border-radius: 50%;
-      background: linear-gradient(135deg, rgba(211,168,109,0.18), rgba(157,119,66,0.1));
-      font-size: 1.5rem;
-      font-weight: 800;
-      color: var(--gold-deep);
-    }
-
-    .quote {
-      background: #fff;
-    }
-    .quote .stars {
-      color: #d09a46;
-      letter-spacing: 0.12em;
-      margin-bottom: 12px;
-      font-size: 1.1rem;
-    }
-
-    .cta-banner {
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 26px;
-      align-items: center;
-      background: linear-gradient(135deg, #1b1413 0%, #4c362d 100%);
-      border-radius: 30px;
-      color: #fff;
-      padding: 34px 28px;
-    }
-
-    .reveal-box {
-      border: 1px solid rgba(255,255,255,0.12);
-      background: rgba(255,255,255,0.04);
-      border-radius: 24px;
-      min-height: 230px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      padding: 22px;
-    }
-
-    .surprise-button {
-      width: 138px;
-      height: 138px;
-      border: none;
-      border-radius: 50%;
-      cursor: pointer;
-      font-size: 0.95rem;
-      font-weight: 800;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: #fff;
-      background: radial-gradient(circle at 30% 30%, #f6d9af 0%, #d7af72 32%, #9a753f 100%);
-      box-shadow: 0 26px 50px rgba(211,168,109,0.35);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-    .surprise-button:hover {
-      transform: scale(1.04);
-      box-shadow: 0 30px 60px rgba(211,168,109,0.4);
-    }
-
-    .reveal-message {
-      display: none;
-      opacity: 0;
-      transform: translateY(18px);
-      transition: all 0.35s ease;
-      text-align: center;
-    }
-    .reveal-message.show {
-      display: block;
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .reveal-message h3 {
-      margin: 0 0 8px;
-      font-family: Georgia, serif;
-      font-size: clamp(1.7rem, 1.5vw + 0.8rem, 2.6rem);
-    }
-    .reveal-message p {
-      margin: 0;
-      color: rgba(255,255,255,0.76);
-    }
-
-    .faq-item {
-      background: rgba(255,255,255,0.7);
-    }
-
-    .topbar-actions {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .cart-toggle,
-    .admin-link {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.18);
-      background: rgba(255,255,255,0.04);
-      color: #fff;
-      font-size: 0.72rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      padding: 9px 14px;
-      cursor: pointer;
-      text-decoration: none;
-    }
-
-    .cart-toggle {
-      font-weight: 700;
-    }
-
-    .shop-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 24px;
-    }
-
-    .shop-card {
-      background: rgba(255,255,255,0.75);
-      border: 1px solid var(--line);
-      border-radius: 24px;
-      padding: 22px 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      box-shadow: 0 12px 30px rgba(29, 19, 15, 0.04);
-    }
-
-    .shop-card .tag {
-      display: inline-block;
-      width: fit-content;
-      background: rgba(211,168,109,0.12);
-      color: var(--gold-deep);
-      border: 1px solid rgba(211,168,109,0.2);
-      border-radius: 999px;
-      padding: 6px 10px;
-      font-size: 0.66rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      font-weight: 700;
-    }
-
-    .shop-card h3 {
-      margin: 0;
-      font-size: 1.5rem;
-      font-family: Georgia, serif;
-    }
-
-    .shop-card p {
-      margin: 0;
-      color: var(--muted);
-    }
-
-    .shop-card .price {
-      font-size: 1.75rem;
-      font-weight: 800;
-      letter-spacing: -0.05em;
-      color: var(--dark);
-    }
-
-    .shop-card .add-btn {
-      margin-top: auto;
-      width: 100%;
-    }
-
-    .cart-panel {
-      position: fixed;
-      top: 0;
-      right: 0;
-      width: min(440px, calc(100% - 20px));
-      height: 100vh;
-      background: #fffdfc;
-      border-left: 1px solid var(--line);
-      box-shadow: -20px 0 60px rgba(23, 16, 13, 0.14);
-      transform: translateX(110%);
-      transition: transform 0.25s ease;
-      z-index: 120;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .cart-panel.open {
-      transform: translateX(0);
-    }
-
-    .cart-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      padding: 20px 20px 12px;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .cart-header h3 {
-      margin: 0;
-      font-size: 1.5rem;
-      font-family: Georgia, serif;
-    }
-
-    .close-cart {
-      border: none;
-      background: transparent;
-      color: var(--muted);
-      font-size: 1.5rem;
-      cursor: pointer;
-    }
-
-    .cart-items {
-      flex: 1;
-      overflow-y: auto;
-      padding: 16px 20px;
-      display: grid;
-      gap: 14px;
-    }
-
-    .cart-item {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 12px;
-      background: #fff;
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      padding: 14px;
-    }
-
-    .cart-item h4 {
-      margin: 0 0 6px;
-      font-size: 1rem;
-    }
-
-    .cart-item .meta {
-      color: var(--muted);
-      font-size: 0.85rem;
-    }
-
-    .qty-box {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-top: 12px;
-    }
-
-    .qty-box button {
-      width: 26px;
-      height: 26px;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      background: #fff;
-      cursor: pointer;
-      font-weight: 700;
-    }
-
-    .cart-summary {
-      padding: 16px 20px 20px;
-      border-top: 1px solid var(--line);
-      background: #fff;
-    }
-
-    .summary-total {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 1.2rem;
-      font-weight: 800;
-      margin-bottom: 16px;
-    }
-
-    .checkout-form {
-      display: grid;
-      gap: 12px;
-      margin-top: 10px;
-    }
-
-    .checkout-form input,
-    .checkout-form select,
-    .checkout-form textarea {
-      width: 100%;
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      padding: 12px 14px;
-      font: inherit;
-      background: #fff;
-      color: var(--text);
-    }
-
-    .checkout-form textarea {
-      min-height: 80px;
-      resize: vertical;
-    }
-
-    .checkout-form .double {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-    }
-
-    .order-message {
-      display: none;
-      margin-top: 12px;
-      padding: 12px 14px;
-      border-radius: 12px;
-      font-weight: 700;
-      background: rgba(34, 77, 65, 0.1);
-      color: var(--green);
-      border: 1px solid rgba(34, 77, 65, 0.2);
-    }
-
-    .order-message.show {
-      display: block;
-    }
-
-    footer {
-      margin-top: 26px;
-      background: #140f0d;
-      color: #fff;
-      padding: 28px 0 36px;
-    }
-
-    .footer-inner {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 14px;
-      flex-wrap: wrap;
-      border-top: 1px solid rgba(255,255,255,0.08);
-      padding-top: 24px;
-      color: rgba(255,255,255,0.74);
-      font-size: 0.95rem;
-    }
-
-    @media (max-width: 980px) {
-      .hero-grid,
-      .market-grid,
-      .cta-banner {
-        grid-template-columns: 1fr;
-      }
-      .features-grid,
-      .bundle-grid,
-      .steps-grid,
-      .testimonials-grid,
-      .idea-grid,
-      .faq-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-    }
-
-    @media (max-width: 640px) {
-      .nav { display: none; }
-      .features-grid,
-      .bundle-grid,
-      .steps-grid,
-      .testimonials-grid,
-      .idea-grid,
-      .faq-grid {
-        grid-template-columns: 1fr;
-      }
-      .hero { padding-top: 42px; }
-      .product-visual { height: 520px; }
-      .spray { width: 220px; height: 340px; }
-      .cta-row { flex-direction: column; }
-      .button { width: 100%; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TZ Luxe Blend — Outils de maquillage de luxe</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Jost:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#17141b;
+    --ivory:#f7f1ea;
+    --rose:#d9a9a0;
+    --wine:#5b2333;
+    --gold:#b08d57;
+    --taupe:#9c8a7c;
+    --ivory-dim:#efe6db;
+    --line: rgba(23,20,27,0.12);
+    --line-light: rgba(247,241,234,0.18);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--ivory);
+    color:var(--ink);
+    font-family:'Jost', sans-serif;
+    font-weight:400;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; scroll-behavior:auto !important;}
+  }
+  a{color:inherit;}
+  img,svg{display:block; max-width:100%;}
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.72rem;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--wine);
+  }
+  .eyebrow.on-dark{color:var(--rose);}
+  h1,h2,h3{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    letter-spacing:-0.01em;
+  }
+  .wrap{
+    max-width:1180px;
+    margin:0 auto;
+    padding:0 32px;
+  }
+  /* ---------- blend swipe (signature element) ---------- */
+  .blend-swipe{
+    height:3px;
+    width:100%;
+    background:linear-gradient(90deg, var(--wine) 0%, var(--rose) 30%, var(--gold) 55%, var(--rose) 78%, var(--wine) 100%);
+    background-size:200% 100%;
+    animation:swipe-shift 9s ease-in-out infinite;
+  }
+  @keyframes swipe-shift{
+    0%{background-position:0% 0%;}
+    50%{background-position:100% 0%;}
+    100%{background-position:0% 0%;}
+  }
+  .blend-blob{
+    position:absolute;
+    border-radius:44% 56% 62% 38% / 48% 42% 58% 52%;
+    background:conic-gradient(from 120deg, var(--wine), var(--rose), var(--gold), var(--wine));
+    filter:blur(0.5px);
+    opacity:0.9;
+  }
+
+  /* ---------- nav ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(247,241,234,0.88);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  nav.wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    padding-top:18px; padding-bottom:18px;
+  }
+  .logo{
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-weight:500;
+    font-size:1.35rem;
+    letter-spacing:0.01em;
+  }
+  .logo span{color:var(--wine);}
+  .nav-links{
+    display:flex; gap:36px; list-style:none;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.75rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+  }
+  .nav-links a{
+    text-decoration:none;
+    position:relative;
+    padding-bottom:4px;
+  }
+  .nav-links a::after{
+    content:"";
+    position:absolute; left:0; bottom:0;
+    height:1.5px; width:0%;
+    background:var(--wine);
+    transition:width 0.3s ease;
+  }
+  .nav-links a:hover::after{width:100%;}
+  .nav-cta{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.72rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    border:1px solid var(--ink);
+    padding:9px 18px;
+    text-decoration:none;
+    transition:background 0.25s ease, color 0.25s ease;
+  }
+  .nav-cta:hover{background:var(--ink); color:var(--ivory);}
+  .mobile-toggle{display:none;}
+  .nav-right{display:flex; align-items:center; gap:18px;}
+  .cart-toggle{
+    position:relative;
+    background:none; border:none; cursor:pointer;
+    color:var(--ink);
+    padding:6px;
+    display:flex; align-items:center;
+    transition:opacity 0.2s ease;
+  }
+  .cart-toggle:hover{opacity:0.6;}
+  .cart-count{
+    position:absolute; top:-4px; right:-6px;
+    background:var(--wine); color:var(--ivory);
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.62rem;
+    width:16px; height:16px;
+    border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    line-height:1;
+  }
+
+  /* ---------- placeholder product thumbnails ---------- */
+  .thumb{
+    position:relative;
+    aspect-ratio:1/1;
+    border-radius:2px;
+    overflow:hidden;
+    display:flex; align-items:center; justify-content:center;
+    background:linear-gradient(135deg, var(--wine) 0%, var(--rose) 45%, var(--gold) 100%);
+  }
+  .thumb::after{
+    content:"";
+    position:absolute; inset:0;
+    background:repeating-linear-gradient(135deg, rgba(255,255,255,0.06) 0px, rgba(255,255,255,0.06) 2px, transparent 2px, transparent 14px);
+  }
+  .thumb svg{width:46%; height:46%; position:relative; z-index:1; stroke:var(--ivory); fill:none; stroke-width:1.3;}
+  .thumb .ph-tag{
+    position:absolute; bottom:8px; left:8px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.58rem;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:rgba(247,241,234,0.75);
+    z-index:1;
+  }
+
+  /* ---------- price / cart controls ---------- */
+  .price-row{
+    display:flex; align-items:center; justify-content:space-between;
+    margin-top:20px;
+  }
+  .price{
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-size:1.3rem;
+    color:var(--wine);
+  }
+  .add-cart-btn{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.68rem;
+    letter-spacing:0.07em;
+    text-transform:uppercase;
+    background:var(--ink);
+    color:var(--ivory);
+    border:1px solid var(--ink);
+    padding:11px 18px;
+    cursor:pointer;
+    transition:background 0.25s ease, color 0.25s ease;
+  }
+  .add-cart-btn:hover{background:transparent; color:var(--ink);
+  }
+  .add-cart-btn.added{background:var(--gold); border-color:var(--gold); color:var(--ink);} 
+
+  /* ---------- cart drawer ---------- */
+  .cart-overlay{
+    position:fixed; inset:0;
+    background:rgba(23,20,27,0.5);
+    z-index:90;
+    opacity:0; pointer-events:none;
+    transition:opacity 0.3s ease;
+  }
+  .cart-overlay.open{opacity:1; pointer-events:auto;}
+  .cart-drawer{
+    position:fixed; top:0; right:0; bottom:0;
+    width:min(420px, 92vw);
+    background:var(--ivory);
+    z-index:91;
+    display:flex; flex-direction:column;
+    transform:translateX(100%);
+    transition:transform 0.35s ease;
+    box-shadow:-8px 0 30px rgba(0,0,0,0.15);
+  }
+  .cart-drawer.open{transform:translateX(0);}
+  .cart-head{
+    padding:26px 28px;
+    display:flex; align-items:center; justify-content:space-between;
+    border-bottom:1px solid var(--line);
+  }
+  .cart-head h3{font-size:1.3rem; font-style:italic;}
+  .cart-close{background:none; border:none; cursor:pointer; font-size:1.4rem; font-family:'Fraunces',serif; color:var(--ink); line-height:1;}
+  .cart-items{flex-grow:1; overflow-y:auto; padding:10px 28px;}
+  .cart-empty{
+    padding:60px 0; text-align:center;
+    color:var(--taupe); font-weight:300; font-size:0.92rem;
+  }
+  .cart-item{
+    display:flex; gap:14px;
+    padding:18px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .cart-item .thumb{width:64px; height:64px; flex-shrink:0;}
+  .cart-item .thumb svg{width:50%; height:50%;}
+  .ci-info{flex-grow:1; display:flex; flex-direction:column; justify-content:center;}
+  .ci-info .name{font-size:0.92rem; font-weight:500;}
+  .ci-info .unit{font-family:'IBM Plex Mono', monospace; font-size:0.68rem; color:var(--taupe); margin-top:4px;}
+  .ci-controls{display:flex; align-items:center; gap:10px; margin-top:8px;}
+  .qty-btn{
+    width:22px; height:22px;
+    border:1px solid var(--line);
+    background:var(--ivory);
+    cursor:pointer;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.75rem;
+    line-height:1;
+  }
+  .qty-val{font-family:'IBM Plex Mono', monospace; font-size:0.78rem; min-width:14px; text-align:center;}
+  .ci-remove{
+    background:none; border:none; cursor:pointer;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.65rem;
+    text-transform:uppercase;
+    color:var(--taupe);
+    text-decoration:underline;
+    margin-left:auto;
+  }
+  .ci-total{
+    font-family:'Fraunces', serif; font-style:italic;
+    font-size:1rem; color:var(--wine);
+    align-self:center;
+  }
+  .cart-foot{
+    padding:24px 28px 30px;
+    border-top:1px solid var(--line);
+  }
+  .cart-subtotal{
+    display:flex; justify-content:space-between; align-items:baseline;
+    margin-bottom:18px;
+  }
+  .cart-subtotal .lbl{font-family:'IBM Plex Mono', monospace; font-size:0.7rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--taupe);} 
+  .cart-subtotal .val{font-family:'Fraunces', serif; font-style:italic; font-size:1.5rem;} 
+  .checkout-btn{
+    width:100%;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.75rem; letter-spacing:0.08em; text-transform:uppercase;
+    background:var(--wine); color:var(--ivory);
+    border:1px solid var(--wine);
+    padding:16px; cursor:pointer;
+    transition:opacity 0.2s ease;
+  }
+  .checkout-btn:hover{opacity:0.85;}
+  .checkout-btn:disabled{opacity:0.35; cursor:not-allowed;}
+
+  /* ---------- checkout modal ---------- */
+  .modal-overlay{
+    position:fixed; inset:0; z-index:99;
+    background:rgba(23,20,27,0.6);
+    display:none; align-items:center; justify-content:center;
+    padding:24px;
+  }
+  .modal-overlay.open{display:flex;}
+  .modal-box{
+    background:var(--ivory);
+    max-width:420px; width:100%;
+    padding:44px 36px;
+    text-align:center;
+  }
+  .modal-box .icon-ok{
+    width:52px; height:52px; border-radius:50%;
+    background:var(--wine); color:var(--ivory);
+    display:flex; align-items:center; justify-content:center;
+    margin:0 auto 22px;
+    font-family:'Fraunces', serif; font-size:1.4rem;
+  }
+  .modal-box h3{font-size:1.4rem; font-style:italic;}
+  .modal-box p{margin-top:12px; font-weight:300; color:#5c5560; font-size:0.92rem;}
+  .modal-close-btn{
+    margin-top:26px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.72rem; letter-spacing:0.07em; text-transform:uppercase;
+    background:var(--ink); color:var(--ivory);
+    border:none; padding:13px 26px; cursor:pointer;
+  }
+
+  /* ---------- boutique grid ---------- */
+  .shop-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:34px;
+  }
+  .shop-card{
+    background:var(--ivory);
+    border:1px solid var(--line);
+    padding:20px;
+    display:flex; flex-direction:column;
+  }
+  .shop-card h3{
+    font-size:1.08rem;
+    font-weight:500;
+    margin-top:16px;
+  }
+  .shop-card .cat{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.64rem;
+    letter-spacing:0.07em;
+    text-transform:uppercase;
+    color:var(--gold);
+    margin-top:16px;
+  }
+  .shop-card .short{
+    margin-top:8px;
+    font-size:0.86rem;
+    color:#5c5560;
+    font-weight:300;
+    flex-grow:1;
+  }
+  .ph-banner{
+    background:var(--ivory-dim);
+    border:1px dashed var(--taupe);
+    padding:14px 20px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.72rem;
+    color:var(--taupe);
+    text-transform:uppercase;
+    letter-spacing:0.04em;
+    margin-bottom:40px;
+  }
+
+  @media (max-width:900px){
+    .shop-grid{grid-template-columns:1fr 1fr;}
+  }
+  @media (max-width:600px){
+    .shop-grid{grid-template-columns:1fr;}
+  }
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;
+    background:var(--ink);
+    color:var(--ivory);
+    overflow:hidden;
+    padding:120px 0 100px;
+  }
+  .hero .blend-blob{
+    width:620px; height:620px;
+    top:-220px; right:-160px;
+    opacity:0.35;
+  }
+  .hero-inner{
+    position:relative; z-index:2;
+    display:grid;
+    grid-template-columns:1.1fr 0.9fr;
+    gap:60px;
+    align-items:center;
+  }
+  .hero h1{
+    font-size:clamp(2.6rem, 5vw, 4.4rem);
+    line-height:1.03;
+    margin-top:18px;
+    font-weight:500;
+  }
+  .hero h1 em{
+    font-style:italic;
+    font-weight:400;
+    color:var(--rose);
+  }
+  .hero p.lede{
+    margin-top:26px;
+    max-width:480px;
+    font-size:1.08rem;
+    color:rgba(247,241,234,0.78);
+    font-weight:300;
+  }
+  .hero-actions{
+    margin-top:38px;
+    display:flex; gap:16px; flex-wrap:wrap;
+  }
+  .btn-primary{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.75rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    background:var(--rose);
+    color:var(--ink);
+    border:1px solid var(--rose);
+    padding:15px 28px;
+    text-decoration:none;
+    transition:background 0.25s ease, color 0.25s ease, transform 0.25s ease;
+    display:inline-block;
+  }
+  .btn-primary:hover{background:transparent; color:var(--ivory); transform:translateY(-2px);}
+  .btn-ghost{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.75rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--ivory);
+    border:1px solid var(--line-light);
+    padding:15px 28px;
+    text-decoration:none;
+    transition:border-color 0.25s ease;
+  }
+  .btn-ghost:hover{border-color:var(--rose);}
+
+  .hero-visual{
+    position:relative;
+    aspect-ratio:1/1.05;
+  }
+  .hero-visual svg{width:100%; height:100%;}
+
+  .hero-stats{
+    position:relative; z-index:2;
+    margin-top:78px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:0;
+    border-top:1px solid var(--line-light);
+    padding-top:28px;
+  }
+  .hero-stats div{padding-right:20px;}
+  .hero-stats .num{
+    font-family:'Fraunces', serif;
+    font-size:1.8rem;
+    color:var(--rose);
+  }
+  .hero-stats .lbl{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.68rem;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:rgba(247,241,234,0.6);
+    margin-top:6px;
+  }
+
+  /* ---------- section shell ---------- */
+  section{padding:104px 0;}
+  .section-head{
+    max-width:640px;
+    margin-bottom:56px;
+  }
+  .section-head h2{
+    font-size:clamp(1.9rem, 3.2vw, 2.6rem);
+    margin-top:14px;
+  }
+  .section-head p{
+    margin-top:16px;
+    color:#4b4550;
+    font-weight:300;
+    font-size:1.02rem;
+  }
+
+  /* ---------- bundles ---------- */
+  .bundles-band{background:var(--ivory);} 
+  .bundle-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:2px;
+    background:var(--line);
+    border:1px solid var(--line);
+  }
+  .bundle-card{
+    background:var(--ivory);
+    padding:44px 34px;
+    display:flex;
+    flex-direction:column;
+    position:relative;
+    transition:background 0.3s ease;
+  }
+  .bundle-card:hover{background:var(--ivory-dim);} 
+  .bundle-tier{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.7rem;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--gold);
+    display:flex; align-items:center; gap:10px;
+  }
+  .bundle-tier .swatch{
+    width:22px; height:8px; border-radius:6px;
+  }
+  .bundle-card.starter .swatch{background:linear-gradient(90deg,#e6cfc6,var(--rose));}
+  .bundle-card.pro .swatch{background:linear-gradient(90deg,var(--wine),#8a3a52);} 
+  .bundle-card.travel .swatch{background:linear-gradient(90deg,var(--gold),#e0c98f);} 
+  .bundle-card h3{
+    font-size:1.55rem;
+    margin-top:18px;
+    font-style:italic;
+    font-weight:500;
+  }
+  .bundle-card .desc{
+    margin-top:10px;
+    font-size:0.92rem;
+    color:#5c5560;
+    font-weight:300;
+    min-height:44px;
+  }
+  .bundle-items{
+    list-style:none;
+    margin-top:26px;
+    padding-top:22px;
+    border-top:1px solid var(--line);
+    flex-grow:1;
+  }
+  .bundle-items li{
+    padding:9px 0;
+    font-size:0.94rem;
+    display:flex;
+    align-items:baseline;
+    gap:10px;
+  }
+  .bundle-items li::before{
+    content:"";
+    width:5px; height:5px;
+    border-radius:50%;
+    background:var(--wine);
+    flex-shrink:0;
+    transform:translateY(-3px);
+  }
+  .bundle-note{
+    margin-top:24px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.68rem;
+    letter-spacing:0.04em;
+    color:var(--taupe);
+    text-transform:uppercase;
+  }
+
+  .why-bundles{
+    margin-top:2px;
+    background:var(--wine);
+    color:var(--ivory);
+    padding:52px 48px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:40px;
+    align-items:center;
+  }
+  .why-bundles h3{
+    font-size:1.7rem;
+    font-style:italic;
+    font-weight:500;
+    line-height:1.25;
+  }
+  .why-bundles p{
+    font-weight:300;
+    color:rgba(247,241,234,0.82);
+    font-size:0.98rem;
+  }
+
+  /* ---------- gap / innovation section ---------- */
+  .gaps-band{
+    background:var(--ink);
+    color:var(--ivory);
+    position:relative;
+    overflow:hidden;
+  }
+  .gaps-band .blend-blob{
+    width:520px; height:520px;
+    bottom:-260px; left:-180px;
+    opacity:0.22;
+  }
+  .gap-grid{
+    position:relative; z-index:2;
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:1px;
+    background:var(--line-light);
+    border:1px solid var(--line-light);
+  }
+  .gap-card{
+    background:var(--ink);
+    padding:0;
+  }
+  .gap-header{
+    width:100%;
+    background:none;
+    border:none;
+    color:var(--ivory);
+    text-align:left;
+    padding:32px 34px;
+    cursor:pointer;
+    display:flex;
+    align-items:flex-start;
+    justify-content:space-between;
+    gap:20px;
+    font-family:inherit;
+  }
+  .gap-header .htxt .idx{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.7rem;
+    letter-spacing:0.1em;
+    color:var(--rose);
+    display:block;
+    margin-bottom:10px;
+  }
+  .gap-header h3{
+    font-size:1.28rem;
+    font-weight:500;
+    line-height:1.3;
+  }
+  .gap-header .plus{
+    font-family:'Fraunces', serif;
+    font-size:1.6rem;
+    color:var(--rose);
+    flex-shrink:0;
+    transition:transform 0.3s ease;
+    line-height:1;
+    margin-top:4px;
+  }
+  .gap-card.open .gap-header .plus{transform:rotate(45deg);} 
+  .gap-body{
+    max-height:0;
+    overflow:hidden;
+    transition:max-height 0.4s ease;
+    padding:0 34px;
+  }
+  .gap-card.open .gap-body{
+    max-height:600px;
+    padding-bottom:34px;
+  }
+  .gap-body .blk{margin-top:18px;}
+  .gap-body .blk:first-child{margin-top:0;}
+  .gap-body .lbl{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.66rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--gold);
+    margin-bottom:8px;
+  }
+  .gap-body p, .gap-body ul{
+    font-weight:300;
+    font-size:0.92rem;
+    color:rgba(247,241,234,0.78);
+  }
+  .gap-body ul{list-style:none;}
+  .gap-body ul li{
+    padding:5px 0;
+    display:flex; gap:10px;
+  }
+  .gap-body ul li::before{
+    content:"—";
+    color:var(--rose);
+    flex-shrink:0;
+  }
+  .gap-body .tagname{
+    font-style:italic;
+    color:var(--rose);
+    font-family:'Fraunces', serif;
+    font-size:1.05rem;
+  }
+
+  /* ---------- process / how bundles+gaps connect ---------- */
+  .strategy-band{
+    background:var(--ivory-dim);
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+  }
+  .strategy-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:44px;
+  }
+  .strategy-item .eyebrow{margin-bottom:12px;}
+  .strategy-item h3{font-size:1.25rem; font-weight:500;}
+  .strategy-item p{
+    margin-top:10px;
+    font-size:0.92rem;
+    color:#5c5560;
+    font-weight:300;
+  }
+
+  /* ---------- footer / cta ---------- */
+  footer{
+    background:var(--ink);
+    color:var(--ivory);
+    padding:90px 0 40px;
+  }
+  .footer-cta{
+    text-align:center;
+    max-width:620px;
+    margin:0 auto 70px;
+  }
+  .footer-cta h2{
+    font-size:clamp(2rem, 4vw, 2.8rem);
+    font-style:italic;
+    font-weight:500;
+  }
+  .footer-cta p{
+    margin-top:16px;
+    color:rgba(247,241,234,0.7);
+    font-weight:300;
+  }
+  .footer-form{
+    margin-top:34px;
+    display:flex;
+    justify-content:center;
+    gap:0;
+    max-width:420px;
+    margin-left:auto; margin-right:auto;
+  }
+  .footer-form input{
+    flex-grow:1;
+    background:transparent;
+    border:1px solid var(--line-light);
+    border-right:none;
+    padding:14px 16px;
+    color:var(--ivory);
+    font-family:'Jost', sans-serif;
+    font-size:0.92rem;
+  }
+  .footer-form input::placeholder{color:rgba(247,241,234,0.45);} 
+  .footer-form input:focus{outline:2px solid var(--rose); outline-offset:-2px;} 
+  .footer-form button{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.72rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    background:var(--rose);
+    color:var(--ink);
+    border:1px solid var(--rose);
+    padding:0 22px;
+    cursor:pointer;
+    transition:background 0.25s ease;
+  }
+  .footer-form button:hover{background:var(--ivory);} 
+  .footer-form .ok-msg{
+    margin-top:14px; text-align:center;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.75rem;
+    color:var(--rose);
+    display:none;
+  }
+  .footer-bottom{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    border-top:1px solid var(--line-light);
+    padding-top:30px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.7rem;
+    letter-spacing:0.04em;
+    color:rgba(247,241,234,0.55);
+    flex-wrap:wrap;
+    gap:14px;
+  }
+  .footer-links{display:flex; gap:26px; list-style:none;}
+
+  /* ---------- responsive ---------- */
+  @media (max-width:900px){
+    .hero-inner{grid-template-columns:1fr; gap:44px;}
+    .hero-visual{order:-1; max-width:280px; margin:0 auto;}
+    .hero-stats{grid-template-columns:repeat(3,1fr); gap:14px;}
+    .bundle-grid{grid-template-columns:1fr;}
+    .gap-grid{grid-template-columns:1fr;}
+    .why-bundles{grid-template-columns:1fr;}
+    .strategy-grid{grid-template-columns:1fr; gap:34px;}
+    .nav-links{display:none;}
+    .footer-bottom{flex-direction:column; align-items:flex-start;}
+  }
+</style>
 </head>
 <body>
-  <div class="topbar">
-    <div class="container topbar-inner">
-      <div class="brand">TZ LUXE</div>
-      <nav class="nav" aria-label="Navigation principale">
-        <a href="#product">Produit</a>
-        <a href="#market">Marché</a>
-        <a href="#bundles">Bundles</a>
-        <a href="#ideas">Idées produit</a>
-        <a href="#faq">FAQ</a>
-      </nav>
-      <div class="topbar-actions">
-        <button class="cart-toggle" id="cartToggle" type="button">Panier (<span id="cartCount">0</span>)</button>
-        <a href="login.html" class="admin-link">Admin</a>
+
+<header>
+  <nav class="wrap">
+    <div class="logo">TZ <span>LUXE</span> BLEND</div>
+    <ul class="nav-links">
+      <li><a href="#bundles">Coffrets</a></li>
+      <li><a href="#boutique">Boutique</a></li>
+      <li><a href="#gaps">Innovation</a></li>
+      <li><a href="#strategie">Stratégie</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="cart-toggle" onclick="toggleCart(true)" aria-label="Ouvrir le panier">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 6h2l1.4 10.6A2 2 0 0 0 9.4 18h8.2a2 2 0 0 0 2-1.7L21 8H7"/><circle cx="10" cy="21" r="1.3"/><circle cx="18" cy="21" r="1.3"/></svg>
+        <span class="cart-count" id="cartCount">0</span>
+      </button>
+      <a class="nav-cta" href="#footer-cta">Nous écrire</a>
+    </div>
+  </nav>
+  <div class="blend-swipe"></div>
+</header>
+
+<section class="hero">
+  <div class="blend-blob" aria-hidden="true"></div>
+  <div class="wrap hero-inner">
+    <div>
+      <span class="eyebrow on-dark">Marque d'outils de maquillage — Cahier des charges</span>
+      <h1>Le blend qui <em>manquait</em><br>au marché de la beauté.</h1>
+      <p class="lede">TZ Luxe Blend conçoit des coffrets de pinceaux et des accessoires de maquillage pensés comme un vrai rituel de luxe — du kit débutante au sac de voyage glam, jusqu'aux produits qui comblent les vides du marché actuel.</p>
+      <div class="hero-actions">
+        <a class="btn-primary" href="#bundles">Voir les coffrets</a>
+        <a class="btn-ghost" href="#gaps">Explorer les innovations</a>
+      </div>
+      <div class="hero-stats">
+        <div>
+          <div class="num">03</div>
+          <div class="lbl">Coffrets signature</div>
+        </div>
+        <div>
+          <div class="num">06</div>
+          <div class="lbl">Concepts produits inédits</div>
+        </div>
+        <div>
+          <div class="num">01</div>
+          <div class="lbl">Promesse — le blend parfait</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-visual" aria-hidden="true">
+      <svg viewBox="0 0 400 420" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="brushGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            /* Lines 850-853 omitted */
+          </linearGradient>
+          <linearGradient id="handleGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+            /* Lines 855-857 omitted */
+          </linearGradient>
+        </defs>
+        <ellipse cx="200" cy="395" rx="150" ry="14" fill="#000" opacity="0.25"/>
+        <rect x="182" y="150" width="36" height="220" rx="12" fill="url(#handleGrad)" stroke="#3a3340" stroke-width="1"/>
+        <rect x="188" y="230" width="24" height="3" fill="#b08d57" opacity="0.6"/>
+        <rect x="188" y="260" width="24" height="3" fill="#b08d57" opacity="0.6"/>
+        <path d="M200 150 C 130 130, 95 70, 110 15 C 150 45, 165 30, 200 55 C 235 30, 250 45, 290 15 C 305 70, 270 130, 200 150 Z" fill="url(#brushGrad)"/>
+        <path d="M200 150 C 160 138, 140 110, 140 80 C 165 95, 185 95, 200 108 C 215 95, 235 95, 260 80 C 260 110, 240 138, 200 150 Z" fill="#17141b" opacity="0.15"/>
+        <circle cx="90" cy="330" r="34" fill="none" stroke="#d9a9a0" stroke-width="1" opacity="0.5"/>
+        <circle cx="330" cy="110" r="20" fill="none" stroke="#b08d57" stroke-width="1" opacity="0.5"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section class="bundles-band" id="bundles">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Stratégie de coffrets</span>
+      <h2>Trois coffrets, trois façons de vivre le blend.</h2>
+      <p>Chaque coffret est pensé pour un moment précis du parcours beauté — de la première routine à la trousse qui voyage partout.</p>
+    </div>
+
+    <div class="bundle-grid">
+      <div class="bundle-card starter">
+        <div class="thumb">
+          <svg viewBox="0 0 24 24"><path d="M12 3c-3 1-5 4-5 7 0 3 2 4 5 4s5-1 5-4c0-3-2-6-5-7z"/><line x1="12" y1="14" x2="12" y2="21"/></svg>
+          <span class="ph-tag">Image à venir</span>
+        </div>
+        <div class="bundle-tier"><span class="swatch"></span>Niveau 01 — Débutante</div>
+        <h3>Beginner Starter Kit</h3>
+        <p class="desc">L'essentiel pour démarrer une routine maquillage sans se sentir dépassée.</p>
+        <ul class="bundle-items">
+          <li>Set de pinceaux essentiels</li>
+          <li>Étui simple et compact</li>
+          <li>Mini nettoyeur de pinceaux</li>
+        </ul>
+        <div class="bundle-note">Entrée de gamme accessible</div>
+        <div class="price-row">
+          <span class="price">34 €</span>
+          <button class="add-cart-btn" onclick="addToCart('starter-kit','Beginner Starter Kit',34,this)">Ajouter au panier</button>
+        </div>
+      </div>
+
+      <div class="bundle-card pro">
+        <div class="thumb">
+          <svg viewBox="0 0 24 24"><path d="M12 3c-3 1-5 4-5 7 0 3 2 4 5 4s5-1 5-4c0-3-2-6-5-7z"/><line x1="12" y1="14" x2="12" y2="21"/><path d="M7 9c-1.5 0-2.5 1-2.5 2.5"/><path d="M17 9c1.5 0 2.5 1 2.5 2.5"/></svg>
+          <span class="ph-tag">Image à venir</span>
+        </div>
+        <div class="bundle-tier"><span class="swatch"></span>Niveau 02 — Professionnelle</div>
+        <h3>Pro Artist Starter Kit</h3>
+        <p class="desc">L'équipement complet pour les artistes maquilleuses et les passionnées confirmées.</p>
+        <ul class="bundle-items">
+          <li>Set complet de pinceaux</li>
+          <li>Machine de nettoyage de pinceaux</li>
+          <li>Pinceaux visage supplémentaires (houppettes / beauty blenders / têtes personnalisées)</li>
+        </ul>
+        <div class="bundle-note">Gamme professionnelle</div>
+        <div class="price-row">
+          <span class="price">89 €</span>
+          <button class="add-cart-btn" onclick="addToCart('pro-kit','Pro Artist Starter Kit',89,this)">Ajouter au panier</button>
+        </div>
+      </div>
+
+      <div class="bundle-card travel">
+        <div class="thumb">
+          <svg viewBox="0 0 24 24"><rect x="4" y="6" width="16" height="13" rx="2"/><circle cx="12" cy="12.5" r="3.4"/><line x1="9" y1="6" x2="9" y2="4.5"/><line x1="15" y1="6" x2="15" y2="4.5"/></svg>
+          <span class="ph-tag">Image à venir</span>
+        </div>
+        <div class="bundle-tier"><span class="swatch"></span>Niveau 03 — Voyage</div>
+        <h3>Travel Glam Kit</h3>
+        <p class="desc">Le glamour compact, prêt à suivre chaque déplacement.</p>
+        <ul class="bundle-items">
+          <li>Set de pinceaux compact</li>
+          <li>Étui avec miroir intégré et lumière LED</li>
+        </ul>
+        <div class="bundle-note">Format nomade</div>
+        <div class="price-row">
+          <span class="price">49 €</span>
+          <button class="add-cart-btn" onclick="addToCart('travel-kit','Travel Glam Kit',49,this)">Ajouter au panier</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="why-bundles">
+      <h3>Pourquoi des coffrets ?</h3>
+      <p>Les coffrets augmentent la valeur moyenne des commandes et renforcent la perception de luxe de la marque — chaque client repart avec une expérience complète, pas seulement un objet.</p>
+    </div>
+  </div>
+</section>
+
+<section class="bundles-band" id="boutique">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Boutique</span>
+      <h2>Les produits, un par un.</h2>
+      <p>Une sélection de pièces individuelles issues de nos idées de lancement — à ajouter au panier dès maintenant.</p>
+    </div>
+
+    <div class="ph-banner">Maquette — visuels placeholder en attendant les vraies photos produit</div>
+
+    <div class="shop-grid">
+
+      <div class="shop-card">
+        <div class="thumb">
+          <svg viewBox="0 0 24 24"><path d="M8 3l8 8"/><rect x="3" y="11" width="8" height="8" rx="1.5" transform="rotate(-45 7 15)"/><circle cx="17" cy="6" r="2.4"/></svg>
+          <span class="ph-tag">Image à venir</span>
+        </div>
+        <div class="cat">Hygiène express</div>
+        <h3>TZ Luxe Instant Cleanse</h3>
+        <p class="short">Spray nettoyant à séchage instantané, sans rinçage.</p>
+        <div class="price-row">
+          /* Lines 970-971 omitted */
+        </div>
+      </div>
+
+      <div class="shop-card">
+        <div class="thumb">
+          /* Lines 976-978 omitted */
+        </div>
+        <div class="cat">Set ciblé</div>
+        <h3>Complexion Perfection Set</h3>
+        <p class="short">Teint, correcteur, poudre, pinceau à estomper.</p>
+        <div class="price-row">
+          /* Lines 983-985 omitted */
+        </div>
+      </div>
+
+      <div class="shop-card">
+        <div class="thumb">
+          /* Lines 990-992 omitted */
+        </div>
+        <div class="cat">Hygiène des outils</div>
+        <h3>Tapis de séchage en silicone</h3>
+        <p class="short">Séchage vertical, surface antibactérienne.</p>
+        <div class="price-row">
+          /* Lines 997-999 omitted */
+        </div>
+      </div>
+
+      <div class="shop-card">
+        <div class="thumb">
+          /* Lines 1004-1006 omitted */
+        </div>
+        <div class="cat">Base parfaite</div>
+        <h3>Éponge double texture + étui</h3>
+        <p class="short">Côté lisse et côté microfibre, teinte anti-tache.</p>
+        <div class="price-row">
+          /* Lines 1011-1013 omitted */
+        </div>
+      </div>
+
+      <div class="shop-card">
+        <div class="thumb">
+          /* Lines 1018-1020 omitted */
+        </div>
+        <div class="cat">Éducation</div>
+        <h3>Beginner Beauty Guide</h3>
+        <p class="short">Mini-livret + QR codes vers nos tutoriels vidéo.</p>
+        <div class="price-row">
+          /* Lines 1025-1027 omitted */
+        </div>
+      </div>
+
+      <div class="shop-card">
+        <div class="thumb">
+          /* Lines 1032-1034 omitted */
+        </div>
+        <div class="cat">Voyage</div>
+        <h3>Trousse magnétique roulante</h3>
+        <p class="short">Fermeture magnétique, format nomade compact.</p>
+        <div class="price-row">
+          /* Lines 1039-1041 omitted */
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="strategy-band" id="strategie">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Positionnement</span>
+      <h2>Une marque construite sur les manques du marché.</h2>
+    </div>
+    <div class="strategy-grid">
+      <div class="strategy-item">
+        <span class="eyebrow">Constat</span>
+        <h3>Le marché actuel</h3>
+        <p>Les accessoires de maquillage existants sont souvent salissants, lents à utiliser ou peu pensés pour l'hygiène et le voyage.</p>
+      </div>
+      <div class="strategy-item">
+        <span class="eyebrow">Réponse</span>
+        <h3>L'approche TZ Luxe Blend</h3>
+        <p>Des produits ciblés, hygiéniques et pensés pour l'usage réel — entre deux clientes, au quotidien, ou en déplacement.</p>
+      </div>
+      <div class="strategy-item">
+        <span class="eyebrow">Résultat</span>
+        <h3>Une expérience complète</h3>
+        <p>Des coffrets qui accompagnent, des produits qui éduquent, et une gamme qui grandit avec chaque cliente.</p>
       </div>
     </div>
   </div>
+</section>
 
-  <header class="hero" id="product">
-    <div class="container hero-grid">
-      <div class="hero-copy">
-        <div class="eyebrow">Innovation beauté & hygiène</div>
-        <h1>Le spray qui nettoie sans effort.</h1>
-        <p>
-          TZ LUXE Instant Cleanse répond à une vraie lacune du marché : des pinceaux et outils de beauté nettoyés en quelques secondes,
-          sans rinçage, sans complication, et avec un design premium pensé pour les make-up artists et les clientes du quotidien.
-        </p>
-
-        <div class="cta-row">
-          <a href="#bundles" class="button button-primary">Découvrir les bundles</a>
-          <a href="#market" class="button button-secondary">Voir le marché</a>
-        </div>
-
-        <div class="meta-row">
-          <div class="meta-pill">⚡ Nettoyage rapide</div>
-          <div class="meta-pill">🌿 Sans rinçage</div>
-          <div class="meta-pill">💼 Usage pro & daily</div>
-        </div>
-      </div>
-
-      <div class="product-card">
-        <div class="product-visual">
-          <div class="glow"></div>
-          <div class="price-tag">£15 / 12 000 FCFA</div>
-          <div class="spray">
-            <div class="label">
-              <strong>TZ LUXE</strong>
-              <span>Instant Cleanse</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </header>
-
-  <main>
-    <section class="section">
-      <div class="container">
-        <div class="section-head">
-          <h2>Pourquoi ce produit marque vraiment le marché</h2>
-          <p>Les nettoyants pour pinceaux existants sont souvent sales, lents, peu pratiques et peu élégants. TZ LUXE propose une solution rapide, premium et pensée pour l’usage quotidien.</p>
-        </div>
-
-        <div class="features-grid">
-          <article class="card">
-            <div class="icon">🧴</div>
-            <h3>Nettoyage immédiat</h3>
-            <p>Les pinceaux et outils sont nettoyés en quelques secondes sans rincage, sans eau ni matériel supplémentaire.</p>
-          </article>
-
-          <article class="card">
-            <div class="icon">✨</div>
-            <h3>Design premium</h3>
-            <p>Un produit pensé comme un accessoire beauté haut de gamme, avec une expérience visuelle séduisante et premium.</p>
-          </article>
-
-          <article class="card">
-            <div class="icon">🎯</div>
-            <h3>Usage facile</h3>
-            <p>Parfait entre deux clientes, pendant une routine make-up quotidienne ou pour les passionnées de beauté.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="market">
-      <div class="container">
-        <div class="market-wrap">
-          <div class="market-grid">
-            <div>
-              <div class="eyebrow" style="background:#1a1413; margin-bottom:16px;">Analyse du marché</div>
-              <h2 style="font-family:Georgia,serif; font-size: clamp(2rem, 2vw + 1rem, 2.9rem); margin:0 0 14px; letter-spacing:-0.04em;">Le vrai gap dans le marché beauté</h2>
-              <p style="color: var(--muted); margin:0; font-size:1.04rem;">
-                La plupart des nettoyants pour pinceaux sont complexes, salissants, peu adaptés au voyage et souvent limités à un usage centralisé.
-                TZ LUXE comble le besoin d’un produit rapide, portable et premium pour les vrais usages du quotidien.
-              </p>
-
-              <ul>
-                <li>Nettoyage lent et peu pratique.</li>
-                <li>Solutions peu adaptées au transport ou au salon.</li>
-                <li>Peu de marques qui allient hygiène, luxe et simplicité.</li>
-                <li>Fort besoin d’une routine plus rapide et plus confortable.</li>
-              </ul>
-            </div>
-
-            <div class="market-panel">
-              <h3>Positionnement stratégique</h3>
-              <div class="score-row"><span>Urgence d’usage</span><strong>92%</strong></div>
-              <div class="score-bar"><span style="width:92%"></span></div>
-
-              <div class="score-row"><span>Appel premium</span><strong>88%</strong></div>
-              <div class="score-bar"><span style="width:88%"></span></div>
-
-              <div class="score-row"><span>Accessibilité</span><strong>81%</strong></div>
-              <div class="score-bar"><span style="width:81%"></span></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="bundles">
-      <div class="container">
-        <div class="section-head">
-          <h2>Stratégie de bundles</h2>
-          <p>Les bundles augmentent la valeur moyenne des commandes, renforcent le sentiment de luxe et rendent les achats plus faciles à adopter.</p>
-        </div>
-
-        <div class="bundle-grid">
-          <article class="bundle-card">
-            <div class="bundle-tag">Beginner</div>
-            <h3>Beginner Starter Kit</h3>
-            <div class="bundle-price">£24</div>
-            <p>Le meilleur point d’entrée pour découvrir la marque.</p>
-            <ul>
-              <li>Essential Brush Set</li>
-              <li>Simple Case</li>
-              <li>Mini Brush Cleaner</li>
-            </ul>
-            <a href="#" class="button button-primary" style="width:100%;">Choisir</a>
-          </article>
-
-          <article class="bundle-card highlight">
-            <div class="bundle-tag">Most Loved</div>
-            <h3>Pro Artist Starter Kit</h3>
-            <div class="bundle-price">£49</div>
-            <p>Une offre premium pensée pour les professionnels et les artistes make-up.</p>
-            <ul>
-              <li>Full Brush Set</li>
-              <li>Brush Cleaner Machine</li>
-              <li>Extra Face Brushes</li>
-            </ul>
-            <a href="#" class="button button-primary" style="width:100%; background:linear-gradient(135deg,#d7b98d 0%, #f4d7a5 100%); color:#1a1413;">Choisir</a>
-          </article>
-
-          <article class="bundle-card">
-            <div class="bundle-tag">Travel</div>
-            <h3>Travel Glam Kit</h3>
-            <div class="bundle-price">£36</div>
-            <p>Pour les déplacements, les voyages et les routines de beauté nomades.</p>
-            <ul>
-              <li>Compact Brush Set</li>
-              <li>Built-in Mirror Case with LED Light</li>
-            </ul>
-            <a href="#" class="button button-primary" style="width:100%;">Choisir</a>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container">
-        <div class="section-head">
-          <h2>Pourquoi les bundles fonctionnent</h2>
-          <p>Ils réunissent la valeur, le luxe perçu et la facilité d’achat, ce qui aide à augmenter le panier moyen et la fidélisation.</p>
-        </div>
-
-        <div class="features-grid">
-          <article class="card">
-            <div class="icon">📈</div>
-            <h3>Valeur de commande plus élevée</h3>
-            <p>Le client reçoit plus que le produit seul : des accessoires, de la praticité et un sentiment de meilleure offre.</p>
-          </article>
-
-          <article class="card">
-            <div class="icon">💎</div>
-            <h3>Luxe perçu</h3>
-            <p>Une collection cohérente donne une impression de marque premium et rend le produit plus désirable.</p>
-          </article>
-
-          <article class="card">
-            <div class="icon">🔁</div>
-            <h3>Fidélisation</h3>
-            <p>Les clients peuvent acheter plusieurs sets selon leurs besoins, leur style et leurs moments de vie.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="ideas">
-      <div class="container">
-        <div class="section-head">
-          <h2>Idées produit qui répondent à des vrais gaps du marché</h2>
-          <p>Ces ajouts créent des opportunités de croissance dans la catégorie beauté, hygiène et accessoires premium.</p>
-        </div>
-
-        <div class="idea-grid">
-          <article class="idea-card">
-            <div class="idea-num">1</div>
-            <small>Quick Dry Brush Cleaner Spray</small>
-            <h3>TZ LUXE Instant Cleanse</h3>
-            <p>Le marché manque de solution rapide, portable et premium pour nettoyer les pinceaux sans rinçage ni saleté.</p>
-            <ul class="paint-list">
-              <li>Nettoie en quelques secondes</li>
-              <li>Sans rinçage</li>
-              <li>Idéal entre deux clients</li>
-              <li>Cible : MUAs et utilisatrices quotidiennes</li>
-            </ul>
-          </article>
-
-          <article class="idea-card">
-            <div class="idea-num">2</div>
-            <small>Face-specific Brush Sets</small>
-            <h3>Mini sets ciblés</h3>
-            <p>Des kits de petite taille permettent d’entrer plus facilement dans le marché tout en favorisant l’achat multiple.</p>
-            <ul class="paint-list">
-              <li>Complexion Perfection Set</li>
-              <li>Soft Glam Eye Set</li>
-              <li>Contour & Sculpt Set</li>
-              <li>Entry point plus accessible</li>
-            </ul>
-          </article>
-
-          <article class="idea-card">
-            <div class="idea-num">3</div>
-            <small>Hygiene Accessories</small>
-            <h3>Accessoires d’hygiène premium</h3>
-            <p>Le marché est encore très vide sur l’hygiène des outils de beauté, qui est essentielle pour éviter les bactéries.</p>
-            <ul class="paint-list">
-              <li>Luxury Silicone Brush Drying Mats</li>
-              <li>Brush Protector Sleeves</li>
-              <li>Antibacterial storage pouch</li>
-              <li>Replaceable brush head</li>
-            </ul>
-          </article>
-
-          <article class="idea-card">
-            <div class="idea-num">4</div>
-            <small>Luxury Makeup Sponges</small>
-            <h3>Éponges premium sans gaspillage</h3>
-            <p>Des éponges plus fonctionnelles, plus élégantes et plus durables, conçues pour un fini impeccable.</p>
-            <ul class="paint-list">
-              <li>Dual-texture sponge</li>
-              <li>Dark toned sponge</li>
-              <li>Storage case ventilated</li>
-              <li>Bundle sponge + cleanser</li>
-            </ul>
-          </article>
-
-          <article class="idea-card">
-            <div class="idea-num">5</div>
-            <small>Beginner Education</small>
-            <h3>Guide beauté pour débutantes</h3>
-            <p>Les clients ont besoin d’accompagnement : cartes d’utilisation, QR codes et mini guides de formation.</p>
-            <ul class="paint-list">
-              <li>Brush usage cards</li>
-              <li>QR code TikTok/Instagram/YouTube</li>
-              <li>Beginner Beauty Guide booklet</li>
-              <li>Support éducatif premium</li>
-            </ul>
-          </article>
-
-          <article class="idea-card">
-            <div class="idea-num">6</div>
-            <small>Luxury Travel Accessories</small>
-            <h3>Accessoires de voyage haut de gamme</h3>
-            <p>Cette catégorie répond à une demande forte pour des objets pratiques, luxueux et facilement transportables.</p>
-            <ul class="paint-list">
-              <li>Approved brush cleaner bottles</li>
-              <li>Mini LED compact mirror</li>
-              <li>Travel brush roll with magnetic closure</li>
-              <li>Protective brush caps</li>
-            </ul>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container">
-        <div class="section-head">
-          <h2>Comment ça marche</h2>
-          <p>Le produit est pensé pour une utilisation simple, rapide et compatible avec la vie quotidienne des clientes et des artistes.</p>
-        </div>
-
-        <div class="steps-grid">
-          <div class="step-box">
-            <div class="step-step">1</div>
-            <h3>Choisir</h3>
-            <p>Un kit adapté à son besoin : débutante, pro ou voyage.</p>
-          </div>
-          <div class="step-box">
-            <div class="step-step">2</div>
-            <h3>Vaporiser</h3>
-            <p>Quelques secondes pour nettoyer les outils sans gaspillage.</p>
-          </div>
-          <div class="step-box">
-            <div class="step-step">3</div>
-            <h3>Sécher</h3>
-            <p>Pas de rinçage ni de procédure longue à suivre.</p>
-          </div>
-          <div class="step-box">
-            <div class="step-step">4</div>
-            <h3>Reprendre</h3>
-            <p>Retour direct à la routine beauté, sans interruption.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="testimonials">
-      <div class="container">
-        <div class="section-head">
-          <h2>Les retours de la clientèle</h2>
-          <p>Des avis qui confirment l’intérêt pour des produits plus rapides, plus fiables et plus premium.</p>
-        </div>
-
-        <div class="testimonials-grid">
-          <article class="quote">
-            <div class="stars">★★★★★</div>
-            <p>“Enfin une solution qui nettoie mes pinceaux sans me faire perdre mon temps entre deux clients.”</p>
-            <strong>— Nina, esthéticienne</strong>
-          </article>
-
-          <article class="quote">
-            <div class="stars">★★★★★</div>
-            <p>“J’ai adoré le concept premium et la simplicité d’utilisation. Le bundle pro est parfait.”</p>
-            <strong>— Emma, beauty studio</strong>
-          </article>
-
-          <article class="quote">
-            <div class="stars">★★★★★</div>
-            <p>“J’utilise ça tous les jours. C’est devenu un indispensable dans ma routine make-up.”</p>
-            <strong>— Sofia, passionnée de beauté</strong>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container">
-        <div class="cta-banner">
-          <div>
-            <div class="eyebrow" style="background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12); color:#f4d39d; margin-bottom:16px;">Surprise Experience</div>
-            <h2 style="font-family:Georgia,serif; font-size: clamp(2rem, 2vw + 1rem, 2.9rem); margin:0 0 8px; letter-spacing:-0.04em;">Une récompense cachée vous attend.</h2>
-            <p style="color: rgba(255,255,255,0.78); margin:0; max-width: 560px;">Cliquez sur le bouton central pour révéler une promo exceptionnelle inspirée de l’effet de révélation des contenus TikTok et du QR code packaging.</p>
-          </div>
-
-          <div class="reveal-box">
-            <button class="surprise-button" id="surpriseBtn">Découvrir</button>
-            <div class="reveal-message" id="revealMessage">
-              <h3>Offre spéciale ✨</h3>
-              <p>-10% sur votre prochain pack premium.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container">
-        <div class="section-head">
-          <h2>Boutique & commande</h2>
-          <p>Ajoutez un produit ou un bundle au panier, remplissez vos informations et validez votre commande. La gestion des commandes est enregistrée localement dans le navigateur.</p>
-        </div>
-
-        <div class="shop-grid" id="productsGrid"></div>
-      </div>
-    </section>
-
-    <section class="section" id="faq">
-      <div class="container">
-        <div class="section-head">
-          <h2>Questions fréquentes</h2>
-        </div>
-
-        <div class="faq-grid">
-          <article class="faq-item">
-            <h4>Le spray convient-il à tous les pinceaux ?</h4>
-            <p>Oui, il est conçu pour les pinceaux et outils de beauté courants, y compris les pinceaux de maquillage et de finition.</p>
-          </article>
-
-          <article class="faq-item">
-            <h4>Peut-on l’utiliser tous les jours ?</h4>
-            <p>Oui, c’est précisément pensé pour un usage quotidien, qu’il soit personnel ou professionnel.</p>
-          </article>
-
-          <article class="faq-item">
-            <h4>Le produit est-il adapté au salon ?</h4>
-            <p>Oui, le kit pro est spécialement conçu pour les professionnels qui ont besoin d’un entretien rapide et régulier.</p>
-          </article>
-
-          <article class="faq-item">
-            <h4>Comment accéder aux tutoriels ?</h4>
-            <p>Via QR code, mini guide inclus et accès aux vidéos TikTok, Instagram et YouTube.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <aside class="cart-panel" id="cartPanel" aria-label="Panier">
-    <div class="cart-header">
-      <h3>Panier</h3>
-      <button class="close-cart" id="closeCart" type="button" aria-label="Fermer le panier">×</button>
+<section class="gaps-band" id="gaps">
+  <div class="blend-blob" aria-hidden="true"></div>
+  <div class="wrap" style="position:relative; z-index:2;">
+    <div class="section-head">
+      <span class="eyebrow on-dark">Idées de nouveaux produits</span>
+      <h2>Les vrais manques du marché beauté — et comment on les comble.</h2>
+      <p style="color:rgba(247,241,234,0.7);">Six concepts identifiés comme de véritables opportunités, chacun pensé pour une clientèle précise. Cliquez pour déplier chaque idée.</p>
     </div>
 
-    <div class="cart-items" id="cartItems"></div>
+    <div class="gap-grid">
 
-    <div class="cart-summary">
-      <div class="summary-total">
-        <span>Total</span>
-        <span id="cartTotal">0 FCFA</span>
+      <div class="gap-card">
+        <button class="gap-header" onclick="toggleGap(this)">
+          /* Lines 1087-1092 omitted */
+        </button>
+        <div class="gap-body">
+          /* Lines 1094-1110 omitted */
+        </div>
       </div>
 
-      <form class="checkout-form" id="checkoutForm">
-        <input type="text" name="fullName" placeholder="Nom complet" required />
-        <div class="double">
-          <input type="tel" name="phone" placeholder="Téléphone" required />
-          <input type="email" name="email" placeholder="Email" required />
+      <div class="gap-card">
+        <button class="gap-header" onclick="toggleGap(this)">
+          /* Lines 1115-1120 omitted */
+        </button>
+        <div class="gap-body">
+          /* Lines 1122-1138 omitted */
         </div>
-        <input type="text" name="city" placeholder="Ville" required />
-        <textarea name="address" placeholder="Adresse complète" required></textarea>
-        <select name="delivery" required>
-          <option value="">Mode de livraison</option>
-          <option value="Livraison locale">Livraison locale</option>
-          <option value="Livraison express">Livraison express</option>
-          <option value="Retrait">Retrait</option>
-        </select>
-        <button type="submit" class="button button-primary" style="width:100%;">Valider la commande</button>
+      </div>
+
+      <div class="gap-card">
+        <button class="gap-header" onclick="toggleGap(this)">
+          /* Lines 1143-1148 omitted */
+        </button>
+        <div class="gap-body">
+          /* Lines 1150-1163 omitted */
+        </div>
+      </div>
+
+      <div class="gap-card">
+        <button class="gap-header" onclick="toggleGap(this)">
+          /* Lines 1168-1173 omitted */
+        </button>
+        <div class="gap-body">
+          /* Lines 1175-1188 omitted */
+        </div>
+      </div>
+
+      <div class="gap-card">
+        <button class="gap-header" onclick="toggleGap(this)">
+          /* Lines 1193-1198 omitted */
+        </button>
+        <div class="gap-body">
+          /* Lines 1200-1216 omitted */
+        </div>
+      </div>
+
+      <div class="gap-card">
+        <button class="gap-header" onclick="toggleGap(this)">
+          /* Lines 1221-1226 omitted */
+        </button>
+        <div class="gap-body">
+          /* Lines 1228-1237 omitted */
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer id="footer-cta">
+  <div class="wrap">
+    <div class="footer-cta">
+      <span class="eyebrow on-dark">Prochaine étape</span>
+      <h2 style="margin-top:14px;">Prêtes à lancer le blend ?</h2>
+      <p>Laissez votre e-mail pour suivre le lancement des coffrets et des nouveautés TZ Luxe Blend.</p>
+      <form class="footer-form" onsubmit="return handleSubmit(event)">
+        <input type="email" placeholder="votre@email.com" required aria-label="Adresse e-mail">
+        <button type="submit">S'inscrire</button>
       </form>
-
-      <div class="order-message" id="orderMessage"></div>
+      <div class="ok-msg" id="okMsg">Merci — vous êtes sur la liste.</div>
     </div>
-  </aside>
-
-  <footer>
-    <div class="container footer-inner">
-      <div class="brand">TZ LUXE</div>
-      <div>Designed in London — Beauty tools made simple.</div>
-      <div>© <span id="year"></span> TZ LUXE</div>
+    <div class="footer-bottom wrap" style="padding:0;">
+      <div>© 2026 TZ Luxe Blend</div>
+      <ul class="footer-links">
+        <li><a href="#bundles">Coffrets</a></li>
+        <li><a href="#gaps">Innovation</a></li>
+        <li><a href="#strategie">Stratégie</a></li>
+      </ul>
     </div>
-  </footer>
+  </div>
+</footer>
 
-  <script>
-    const products = [
-      { id: 'instant-cleanse', name: 'TZ LUXE Instant Cleanse', price: 12000, tag: 'Spray', description: 'Nettoyage rapide sans rinçage' },
-      { id: 'beginner-bundle', name: 'Beginner Starter Kit', price: 24000, tag: 'Beginner', description: 'Essential Brush Set + Simple Case + Mini Cleaner' },
-      { id: 'pro-bundle', name: 'Pro Artist Starter Kit', price: 49000, tag: 'Pro', description: 'Full Brush Set + Brush Cleaner Machine + Extra Face Brushes' },
-      { id: 'travel-kit', name: 'Travel Glam Kit', price: 36000, tag: 'Travel', description: 'Compact Brush Set + LED mirror case' },
-      { id: 'complexion-set', name: 'Complexion Perfection Set', price: 18000, tag: 'Mini Set', description: 'Foundation + Concealer + Powder + Blending Brush' },
-      { id: 'eye-set', name: 'Soft Glam Eye Set', price: 16000, tag: 'Mini Set', description: 'Palette d’outils pour les yeux' }
-    ];
+<div class="cart-overlay" id="cartOverlay" onclick="toggleCart(false)"></div>
+<aside class="cart-drawer" id="cartDrawer" aria-label="Panier">
+  <div class="cart-head">
+    <h3>Votre panier</h3>
+    <button class="cart-close" onclick="toggleCart(false)" aria-label="Fermer le panier">×</button>
+  </div>
+  <div class="cart-items" id="cartItems">
+    <div class="cart-empty">Votre panier est vide pour l'instant.</div>
+  </div>
+  <div class="cart-foot">
+    <div class="cart-subtotal">
+      <span class="lbl">Sous-total</span>
+      <span class="val" id="cartTotal">0 €</span>
+    </div>
+    <button class="checkout-btn" id="checkoutBtn" onclick="openCheckout()" disabled>Passer commande</button>
+  </div>
+</aside>
 
-    const cartKey = 'tzluxe_cart';
-    const ordersKey = 'tzluxe_orders';
-    let cart = JSON.parse(localStorage.getItem(cartKey) || '[]');
+<div class="modal-overlay" id="checkoutModal">
+  <div class="modal-box">
+    <div class="icon-ok">✓</div>
+    <h3>Commande simulée</h3>
+    <p>Ceci est une maquette — aucun paiement réel n'a été effectué. Dans la version finale, cette étape ouvrira le tunnel de paiement.</p>
+    <button class="modal-close-btn" onclick="closeCheckout()">Fermer</button>
+  </div>
+</div>
 
-    const productGrid = document.getElementById('productsGrid');
-    const cartItems = document.getElementById('cartItems');
-    const cartTotal = document.getElementById('cartTotal');
-    const cartCount = document.getElementById('cartCount');
-    const cartPanel = document.getElementById('cartPanel');
-    const checkoutForm = document.getElementById('checkoutForm');
-    const orderMessage = document.getElementById('orderMessage');
+<script>
+  // ---- accordion (innovation section) ----
+  function toggleGap(btn){
+    const card = btn.closest('.gap-card');
+    const wasOpen = card.classList.contains('open');
+    document.querySelectorAll('.gap-card.open').forEach(c => c.classList.remove('open'));
+    if(!wasOpen){ card.classList.add('open'); }
+  }
 
-    function formatPrice(value) {
-      return `${Number(value).toLocaleString('fr-FR')} FCFA`;
-    }
+  // ---- newsletter form ----
+  function handleSubmit(e){
+    e.preventDefault();
+    document.getElementById('okMsg').style.display = 'block';
+    e.target.reset();
+    return false;
+  }
 
-    function saveCart() {
-      localStorage.setItem(cartKey, JSON.stringify(cart));
-      renderCart();
-    }
+  // ---- cart state (in-memory only) ----
+  let cart = [];
 
-    function renderProducts() {
-      productGrid.innerHTML = products.map(product => `
-        <article class="shop-card">
-          <span class="tag">${product.tag}</span>
-          <h3>${product.name}</h3>
-          <p>${product.description}</p>
-          <div class="price">${formatPrice(product.price)}</div>
-          <button class="button button-primary add-btn" data-product-id="${product.id}" type="button">Ajouter au panier</button>
-        </article>
-      `).join('');
-    }
-
-    function addToCart(productId) {
-      const product = products.find(item => item.id === productId);
-      if (!product) return;
-
-      const existing = cart.find(item => item.id === productId);
-      if (existing) {
-        existing.qty += 1;
-      } else {
-        cart.push({ id: productId, qty: 1 });
-      }
-
-      saveCart();
-      cartPanel.classList.add('open');
-    }
-
-    function changeQuantity(productId, delta) {
-      const item = cart.find(entry => entry.id === productId);
-      if (!item) return;
-
-      item.qty += delta;
-      if (item.qty <= 0) {
-        cart = cart.filter(entry => entry.id !== productId);
-      }
-
-      saveCart();
-    }
-
-    function renderCart() {
-      const total = cart.reduce((sum, item) => {
-        const product = products.find(entry => entry.id === item.id);
-        return sum + (product ? product.price * item.qty : 0);
-      }, 0);
-
-      cartCount.textContent = cart.reduce((sum, item) => sum + item.qty, 0);
-      cartTotal.textContent = formatPrice(total);
-
-      if (!cart.length) {
-        cartItems.innerHTML = '<div class="cart-item"><div><h4>Votre panier est vide</h4><div class="meta">Ajoutez un produit pour commencer.</div></div></div>';
-        return;
-      }
-
-      cartItems.innerHTML = cart.map(item => {
-        const product = products.find(entry => entry.id === item.id);
-        if (!product) return '';
-        return `
-          <div class="cart-item">
-            <div>
-              <h4>${product.name}</h4>
-              <div class="meta">${formatPrice(product.price)} / unité</div>
-              <div class="qty-box">
-                <button type="button" data-action="minus" data-product-id="${product.id}">−</button>
-                <span>${item.qty}</span>
-                <button type="button" data-action="plus" data-product-id="${product.id}">+</button>
-              </div>
-            </div>
-            <div style="font-weight:700; align-self:center;">${formatPrice(product.price * item.qty)}</div>
-          </div>
-        `;
-      }).join('');
-    }
-
-    productGrid.addEventListener('click', (event) => {
-      const btn = event.target.closest('.add-btn');
-      if (!btn) return;
-      addToCart(btn.dataset.productId);
-    });
-
-    cartItems.addEventListener('click', (event) => {
-      const actionBtn = event.target.closest('[data-action]');
-      if (!actionBtn) return;
-
-      const { action, productId } = actionBtn.dataset;
-      if (action === 'plus') changeQuantity(productId, 1);
-      if (action === 'minus') changeQuantity(productId, -1);
-    });
-
-    document.getElementById('cartToggle').addEventListener('click', () => {
-      cartPanel.classList.toggle('open');
-    });
-
-    document.getElementById('closeCart').addEventListener('click', () => {
-      cartPanel.classList.remove('open');
-    });
-
-    checkoutForm.addEventListener('submit', (event) => {
-      event.preventDefault();
-
-      if (!cart.length) {
-        orderMessage.textContent = 'Votre panier est vide.';
-        orderMessage.classList.add('show');
-        return;
-      }
-
-      const formData = new FormData(checkoutForm);
-      const customer = {
-        fullName: formData.get('fullName'),
-        phone: formData.get('phone'),
-        email: formData.get('email'),
-        city: formData.get('city'),
-        address: formData.get('address'),
-        delivery: formData.get('delivery'),
-      };
-
-      const total = cart.reduce((sum, item) => {
-        const product = products.find(entry => entry.id === item.id);
-        return sum + (product ? product.price * item.qty : 0);
-      }, 0);
-
-      const orders = JSON.parse(localStorage.getItem(ordersKey) || '[]');
-      const order = {
-        id: `TZ-${Date.now()}`,
-        status: 'Nouveau',
-        createdAt: new Date().toISOString(),
-        customer,
-        items: cart.map(item => {
-          const product = products.find(entry => entry.id === item.id);
-          return {
-            id: item.id,
-            name: product ? product.name : 'Produit',
-            qty: item.qty,
-            price: product ? product.price : 0,
-          };
-        }),
-        total
-      };
-
-      orders.push(order);
-      localStorage.setItem(ordersKey, JSON.stringify(orders));
-
-      cart = [];
-      localStorage.setItem(cartKey, JSON.stringify(cart));
-      renderCart();
-      checkoutForm.reset();
-      orderMessage.textContent = `Commande enregistrée avec succès. Référence : ${order.id}`;
-      orderMessage.classList.add('show');
-    });
-
-    const surpriseBtn = document.getElementById('surpriseBtn');
-    const revealMessage = document.getElementById('revealMessage');
-
-    surpriseBtn.addEventListener('click', () => {
-      revealMessage.classList.toggle('show');
-      surpriseBtn.style.display = revealMessage.classList.contains('show') ? 'none' : 'block';
-    });
-
-    const params = new URLSearchParams(window.location.search);
-    if (params.get('from') === 'qr') {
-      const topbar = document.querySelector('.topbar');
-      const banner = document.createElement('div');
-      banner.style.background = '#d4a86d';
-      banner.style.color = '#1a1413';
-      banner.style.textAlign = 'center';
-      banner.style.fontWeight = '700';
-      banner.style.letterSpacing = '0.08em';
-      banner.style.textTransform = 'uppercase';
-      banner.style.padding = '10px 16px';
-      banner.style.fontSize = '12px';
-      banner.textContent = 'Bienvenue depuis le QR code TZ LUXE';
-      document.body.insertBefore(banner, topbar);
-    }
-
-    document.getElementById('year').textContent = new Date().getFullYear();
-    renderProducts();
+  function addToCart(id, name, price, btn){
+    const existing = cart.find(i => i.id === id);
+    if(existing){ existing.qty += 1; }
+    else{ cart.push({id, name, price, qty:1}); }
     renderCart();
-  </script>
+    toggleCart(true);
+    if(btn){
+      btn.classList.add('added');
+      const original = btn.textContent;
+      btn.textContent = 'Ajouté ✓';
+      setTimeout(() => { btn.classList.remove('added'); btn.textContent = original; }, 1400);
+    }
+  }
+
+  function updateQty(id, delta){
+    const item = cart.find(i => i.id === id);
+    if(!item) return;
+    item.qty += delta;
+    if(item.qty <= 0){ cart = cart.filter(i => i.id !== id); }
+    renderCart();
+  }
+
+  function removeItem(id){
+    cart = cart.filter(i => i.id !== id);
+    renderCart();
+  }
+
+  function renderCart(){
+    const wrap = document.getElementById('cartItems');
+    const countEl = document.getElementById('cartCount');
+    const totalEl = document.getElementById('cartTotal');
+    const checkoutBtn = document.getElementById('checkoutBtn');
+
+    const totalCount = cart.reduce((s,i) => s + i.qty, 0);
+    countEl.textContent = totalCount;
+
+    if(cart.length === 0){
+      wrap.innerHTML = '<div class="cart-empty">Votre panier est vide pour l\'instant.</div>';
+      totalEl.textContent = '0 €';
+      checkoutBtn.disabled = true;
+      return;
+    }
+
+    wrap.innerHTML = cart.map(item => `
+      <div class="cart-item">
+        <div class="thumb"><svg viewBox="0 0 24 24" stroke="var(--ivory)" fill="none" stroke-width="1.3"><path d="M12 3c-3 1-5 4-5 7 0 3 2 4 5 4s5-1 5-4c0-3-2-6-5-7z"/></svg></div>
+        <div class="ci-info">
+          /* Lines 1361-1369 omitted */
+        </div>
+        <div class="ci-total">${item.price * item.qty} €</div>
+      </div>
+    `).join('');
+
+    const total = cart.reduce((s,i) => s + i.price * i.qty, 0);
+    totalEl.textContent = total + ' €';
+    checkoutBtn.disabled = false;
+  }
+
+  function toggleCart(open){
+    document.getElementById('cartOverlay').classList.toggle('open', open);
+    document.getElementById('cartDrawer').classList.toggle('open', open);
+  }
+
+  function openCheckout(){
+    document.getElementById('checkoutModal').classList.add('open');
+  }
+  function closeCheckout(){
+    document.getElementById('checkoutModal').classList.remove('open');
+    toggleCart(false);
+  }
+</script>
+
 </body>
 </html>
