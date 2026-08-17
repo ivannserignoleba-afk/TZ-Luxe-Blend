@@ -1,0 +1,1527 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TZ LUXE | Brush Care & Luxury Beauty Essentials</title>
+  <meta name="description" content="TZ LUXE, luxe beauté et hygiène des pinceaux. Bundle kits, spray nettoyant rapide, accessoires premium, formations et accessoires de voyage." />
+  <style>
+    :root {
+      --bg: #f8f3ef;
+      --panel: #fffdfb;
+      --text: #1e1a17;
+      --muted: #665d58;
+      --line: #eaded0;
+      --gold: #d3a86d;
+      --gold-deep: #9d7742;
+      --dark: #1a1413;
+      --soft: #f3e8de;
+      --green: #224d41;
+      --shadow: 0 22px 56px rgba(28, 21, 17, 0.12);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(180deg, #fdf9f6 0%, #f4eee8 100%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+
+    .container {
+      width: min(1200px, calc(100% - 28px));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(17, 14, 13, 0.96);
+      color: #fff;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .topbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 12px 0;
+    }
+
+    .brand {
+      font-family: Georgia, serif;
+      font-size: 1.7rem;
+      letter-spacing: 0.08em;
+      font-weight: 700;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.75);
+    }
+
+    .nav a:hover { color: #fff; }
+
+    .button {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 999px;
+      border: none;
+      padding: 15px 28px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .button:hover { transform: translateY(-2px); }
+    .button-primary {
+      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-deep) 100%);
+      color: #fff;
+      box-shadow: 0 14px 26px rgba(157,119,66,0.28);
+    }
+    .button-secondary {
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.22);
+      color: #fff;
+    }
+
+    .hero {
+      padding: 70px 0 36px;
+      background:
+        radial-gradient(circle at 12% 12%, rgba(211,168,109,0.22), transparent 18%),
+        linear-gradient(180deg, rgba(255,255,255,0.4), rgba(243,232,222,0.7));
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.12fr 0.88fr;
+      align-items: center;
+      gap: 44px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      background: var(--dark);
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-size: 0.68rem;
+      padding: 9px 14px;
+      border-radius: 999px;
+      margin-bottom: 22px;
+    }
+
+    h1 {
+      margin: 0 0 18px;
+      font-family: Georgia, serif;
+      font-size: clamp(2.8rem, 3vw + 1.2rem, 5rem);
+      line-height: 0.96;
+      letter-spacing: -0.06em;
+    }
+
+    .hero-copy p {
+      max-width: 620px;
+      margin: 0 0 28px;
+      font-size: 1.08rem;
+      color: var(--muted);
+    }
+
+    .cta-row {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
+    }
+
+    .meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .meta-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.55);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 10px 14px;
+    }
+
+    .product-card {
+      background: linear-gradient(180deg, #fffdfb 0%, #f2e6dc 100%);
+      border: 1px solid var(--line);
+      border-radius: 30px;
+      padding: 18px;
+      box-shadow: var(--shadow);
+    }
+
+    .product-visual {
+      position: relative;
+      height: 670px;
+      overflow: hidden;
+      border-radius: 24px;
+      background: linear-gradient(180deg, #f1e7df 0%, #f9f5f2 100%);
+      border: 1px solid var(--line);
+    }
+
+    .glow {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 50% 25%, rgba(255,255,255,0.89), transparent 35%);
+    }
+
+    .price-tag {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      z-index: 3;
+      background: var(--dark);
+      color: #fff;
+      border-radius: 12px;
+      padding: 12px 15px;
+      font-weight: 700;
+      box-shadow: 0 10px 26px rgba(17,14,13,0.22);
+    }
+
+    .spray {
+      position: absolute;
+      bottom: 42px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 290px;
+      height: 430px;
+      background: linear-gradient(180deg, #f8f4ee 0%, #eadfcf 100%);
+      border-radius: 38px 38px 28px 28px;
+      border: 1px solid rgba(40,30,26,0.08);
+      box-shadow: 0 28px 52px rgba(52,38,31,0.18);
+    }
+
+    .spray::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      top: -82px;
+      width: 146px;
+      height: 116px;
+      border-radius: 22px 22px 18px 18px;
+      background: linear-gradient(180deg, #efdfc1 0%, #d3a86d 100%);
+      border: 1px solid rgba(40,30,26,0.06);
+    }
+
+    .spray::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 18px;
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.35);
+      filter: blur(12px);
+    }
+
+    .label {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 118px;
+      width: 188px;
+      text-align: center;
+      background: rgba(255,255,255,0.8);
+      border: 1px solid rgba(26,20,19,0.05);
+      border-radius: 18px;
+      padding: 18px 14px;
+      z-index: 2;
+    }
+    .label strong {
+      display: block;
+      font-family: Georgia, serif;
+      font-size: 1.6rem;
+      letter-spacing: 0.04em;
+    }
+    .label span {
+      display: block;
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .section {
+      padding: 80px 0;
+    }
+
+    .section-head {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+    .section-head h2 {
+      margin: 0 0 14px;
+      font-family: Georgia, serif;
+      font-size: clamp(2rem, 2vw + 1.1rem, 3rem);
+      letter-spacing: -0.05em;
+    }
+    .section-head p {
+      max-width: 760px;
+      margin: 0 auto;
+      color: var(--muted);
+      font-size: 1.04rem;
+    }
+
+    .features-grid,
+    .bundle-grid,
+    .idea-grid,
+    .steps-grid,
+    .testimonials-grid,
+    .faq-grid{
+      display: grid;
+      gap: 22px;
+    }
+
+    .features-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .bundle-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .idea-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .steps-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .testimonials-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .faq-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+    .card, .bundle-card, .idea-card, .quote, .faq-item {
+      background: rgba(255,255,255,0.72);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 26px 22px;
+      box-shadow: 0 10px 30px rgba(36, 26, 20, 0.03);
+    }
+
+    .icon {
+      width: 58px;
+      height: 58px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 16px;
+      border-radius: 18px;
+      font-size: 1.7rem;
+      background: linear-gradient(135deg, rgba(211,168,109,0.16), rgba(157,119,66,0.08));
+    }
+
+    .card h3, .bundle-card h3, .idea-card h3, .faq-item h4 {
+      margin: 0 0 10px;
+      font-size: 1.4rem;
+    }
+
+    .card p, .bundle-card p, .idea-card p, .faq-item p, .quote p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .market-wrap {
+      background: linear-gradient(180deg, #fff, rgba(255,255,255,0.7));
+      border: 1px solid var(--line);
+      border-radius: 30px;
+      padding: 30px;
+    }
+
+    .market-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .market-grid ul {
+      padding-left: 20px;
+      margin: 20px 0 0;
+      color: var(--muted);
+    }
+
+    .market-panel {
+      background: linear-gradient(145deg, #201916 0%, #3d2d29 100%);
+      color: white;
+      border-radius: 24px;
+      padding: 26px 22px;
+    }
+
+    .market-panel h3 {
+      margin: 0 0 18px;
+      font-size: 1.2rem;
+    }
+
+    .score-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.95rem;
+      margin-bottom: 8px;
+      color: rgba(255,255,255,0.76);
+    }
+    .score-bar {
+      width: 100%;
+      height: 8px;
+      background: rgba(255,255,255,0.12);
+      border-radius: 999px;
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+    .score-bar span {
+      height: 100%;
+      display: block;
+      border-radius: inherit;
+      background: linear-gradient(90deg, #d9b989, #f4d39d);
+    }
+
+    .bundle-card {
+      background: #fff;
+      position: relative;
+      overflow: hidden;
+    }
+    .bundle-card.highlight {
+      background: linear-gradient(150deg, #1d1716 0%, #3b2d29 100%);
+      color: #fff;
+      transform: translateY(-8px);
+      border-color: rgba(211,168,109,0.18);
+    }
+    .bundle-card.highlight p,
+    .bundle-card.highlight li {
+      color: rgba(255,255,255,0.78);
+    }
+
+    .bundle-tag {
+      display: inline-block;
+      background: rgba(211,168,109,0.12);
+      color: var(--gold-deep);
+      border: 1px solid rgba(211,168,109,0.24);
+      border-radius: 999px;
+      padding: 7px 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 0.68rem;
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+
+    .bundle-card.highlight .bundle-tag {
+      background: rgba(255,255,255,0.06);
+      color: #f4d39d;
+      border-color: rgba(255,255,255,0.08);
+    }
+
+    .bundle-card h3 {
+      font-size: 1.9rem;
+      font-family: Georgia, serif;
+      margin-bottom: 4px;
+    }
+    .bundle-price {
+      font-size: 2.2rem;
+      font-weight: 800;
+      letter-spacing: -0.06em;
+      margin: 12px 0 10px;
+    }
+
+    .bundle-card ul {
+      margin: 18px 0 22px;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 10px;
+    }
+    .bundle-card li::before {
+      content: "✓";
+      color: var(--gold);
+      font-weight: 700;
+      margin-right: 10px;
+    }
+    .bundle-card.highlight li::before { color: #f4d39d; }
+
+    .idea-card {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+    .idea-num {
+      width: 52px;
+      height: 52px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      background: linear-gradient(135deg, rgba(211,168,109,0.16), rgba(157,119,66,0.09));
+      margin-bottom: 16px;
+      font-weight: 800;
+      color: var(--gold-deep);
+    }
+
+    .idea-card small {
+      display: inline-block;
+      margin-top: 10px;
+      margin-bottom: 12px;
+      color: var(--gold-deep);
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .paint-list {
+      margin: 12px 0 0;
+      padding-left: 18px;
+      color: var(--muted);
+    }
+    .paint-list li { margin-bottom: 8px; }
+
+    .step-box {
+      text-align: center;
+      padding: 12px 10px;
+    }
+    .step-step {
+      width: 72px;
+      height: 72px;
+      margin: 0 auto 18px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(211,168,109,0.18), rgba(157,119,66,0.1));
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--gold-deep);
+    }
+
+    .quote {
+      background: #fff;
+    }
+    .quote .stars {
+      color: #d09a46;
+      letter-spacing: 0.12em;
+      margin-bottom: 12px;
+      font-size: 1.1rem;
+    }
+
+    .cta-banner {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 26px;
+      align-items: center;
+      background: linear-gradient(135deg, #1b1413 0%, #4c362d 100%);
+      border-radius: 30px;
+      color: #fff;
+      padding: 34px 28px;
+    }
+
+    .reveal-box {
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.04);
+      border-radius: 24px;
+      min-height: 230px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      padding: 22px;
+    }
+
+    .surprise-button {
+      width: 138px;
+      height: 138px;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 0.95rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #fff;
+      background: radial-gradient(circle at 30% 30%, #f6d9af 0%, #d7af72 32%, #9a753f 100%);
+      box-shadow: 0 26px 50px rgba(211,168,109,0.35);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .surprise-button:hover {
+      transform: scale(1.04);
+      box-shadow: 0 30px 60px rgba(211,168,109,0.4);
+    }
+
+    .reveal-message {
+      display: none;
+      opacity: 0;
+      transform: translateY(18px);
+      transition: all 0.35s ease;
+      text-align: center;
+    }
+    .reveal-message.show {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-message h3 {
+      margin: 0 0 8px;
+      font-family: Georgia, serif;
+      font-size: clamp(1.7rem, 1.5vw + 0.8rem, 2.6rem);
+    }
+    .reveal-message p {
+      margin: 0;
+      color: rgba(255,255,255,0.76);
+    }
+
+    .faq-item {
+      background: rgba(255,255,255,0.7);
+    }
+
+    .topbar-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .cart-toggle,
+    .admin-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(255,255,255,0.04);
+      color: #fff;
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 9px 14px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .cart-toggle {
+      font-weight: 700;
+    }
+
+    .shop-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
+    }
+
+    .shop-card {
+      background: rgba(255,255,255,0.75);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 22px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      box-shadow: 0 12px 30px rgba(29, 19, 15, 0.04);
+    }
+
+    .shop-card .tag {
+      display: inline-block;
+      width: fit-content;
+      background: rgba(211,168,109,0.12);
+      color: var(--gold-deep);
+      border: 1px solid rgba(211,168,109,0.2);
+      border-radius: 999px;
+      padding: 6px 10px;
+      font-size: 0.66rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .shop-card h3 {
+      margin: 0;
+      font-size: 1.5rem;
+      font-family: Georgia, serif;
+    }
+
+    .shop-card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .shop-card .price {
+      font-size: 1.75rem;
+      font-weight: 800;
+      letter-spacing: -0.05em;
+      color: var(--dark);
+    }
+
+    .shop-card .add-btn {
+      margin-top: auto;
+      width: 100%;
+    }
+
+    .cart-panel {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: min(440px, calc(100% - 20px));
+      height: 100vh;
+      background: #fffdfc;
+      border-left: 1px solid var(--line);
+      box-shadow: -20px 0 60px rgba(23, 16, 13, 0.14);
+      transform: translateX(110%);
+      transition: transform 0.25s ease;
+      z-index: 120;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .cart-panel.open {
+      transform: translateX(0);
+    }
+
+    .cart-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 20px 20px 12px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .cart-header h3 {
+      margin: 0;
+      font-size: 1.5rem;
+      font-family: Georgia, serif;
+    }
+
+    .close-cart {
+      border: none;
+      background: transparent;
+      color: var(--muted);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    .cart-items {
+      flex: 1;
+      overflow-y: auto;
+      padding: 16px 20px;
+      display: grid;
+      gap: 14px;
+    }
+
+    .cart-item {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 12px;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 14px;
+    }
+
+    .cart-item h4 {
+      margin: 0 0 6px;
+      font-size: 1rem;
+    }
+
+    .cart-item .meta {
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    .qty-box {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .qty-box button {
+      width: 26px;
+      height: 26px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      cursor: pointer;
+      font-weight: 700;
+    }
+
+    .cart-summary {
+      padding: 16px 20px 20px;
+      border-top: 1px solid var(--line);
+      background: #fff;
+    }
+
+    .summary-total {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 1.2rem;
+      font-weight: 800;
+      margin-bottom: 16px;
+    }
+
+    .checkout-form {
+      display: grid;
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .checkout-form input,
+    .checkout-form select,
+    .checkout-form textarea {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 12px 14px;
+      font: inherit;
+      background: #fff;
+      color: var(--text);
+    }
+
+    .checkout-form textarea {
+      min-height: 80px;
+      resize: vertical;
+    }
+
+    .checkout-form .double {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .order-message {
+      display: none;
+      margin-top: 12px;
+      padding: 12px 14px;
+      border-radius: 12px;
+      font-weight: 700;
+      background: rgba(34, 77, 65, 0.1);
+      color: var(--green);
+      border: 1px solid rgba(34, 77, 65, 0.2);
+    }
+
+    .order-message.show {
+      display: block;
+    }
+
+    footer {
+      margin-top: 26px;
+      background: #140f0d;
+      color: #fff;
+      padding: 28px 0 36px;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 24px;
+      color: rgba(255,255,255,0.74);
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .market-grid,
+      .cta-banner {
+        grid-template-columns: 1fr;
+      }
+      .features-grid,
+      .bundle-grid,
+      .steps-grid,
+      .testimonials-grid,
+      .idea-grid,
+      .faq-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .nav { display: none; }
+      .features-grid,
+      .bundle-grid,
+      .steps-grid,
+      .testimonials-grid,
+      .idea-grid,
+      .faq-grid {
+        grid-template-columns: 1fr;
+      }
+      .hero { padding-top: 42px; }
+      .product-visual { height: 520px; }
+      .spray { width: 220px; height: 340px; }
+      .cta-row { flex-direction: column; }
+      .button { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="container topbar-inner">
+      <div class="brand">TZ LUXE</div>
+      <nav class="nav" aria-label="Navigation principale">
+        <a href="#product">Produit</a>
+        <a href="#market">Marché</a>
+        <a href="#bundles">Bundles</a>
+        <a href="#ideas">Idées produit</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <div class="topbar-actions">
+        <button class="cart-toggle" id="cartToggle" type="button">Panier (<span id="cartCount">0</span>)</button>
+        <a href="login.html" class="admin-link">Admin</a>
+      </div>
+    </div>
+  </div>
+
+  <header class="hero" id="product">
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <div class="eyebrow">Innovation beauté & hygiène</div>
+        <h1>Le spray qui nettoie sans effort.</h1>
+        <p>
+          TZ LUXE Instant Cleanse répond à une vraie lacune du marché : des pinceaux et outils de beauté nettoyés en quelques secondes,
+          sans rinçage, sans complication, et avec un design premium pensé pour les make-up artists et les clientes du quotidien.
+        </p>
+
+        <div class="cta-row">
+          <a href="#bundles" class="button button-primary">Découvrir les bundles</a>
+          <a href="#market" class="button button-secondary">Voir le marché</a>
+        </div>
+
+        <div class="meta-row">
+          <div class="meta-pill">⚡ Nettoyage rapide</div>
+          <div class="meta-pill">🌿 Sans rinçage</div>
+          <div class="meta-pill">💼 Usage pro & daily</div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-visual">
+          <div class="glow"></div>
+          <div class="price-tag">£15 / 12 000 FCFA</div>
+          <div class="spray">
+            <div class="label">
+              <strong>TZ LUXE</strong>
+              <span>Instant Cleanse</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2>Pourquoi ce produit marque vraiment le marché</h2>
+          <p>Les nettoyants pour pinceaux existants sont souvent sales, lents, peu pratiques et peu élégants. TZ LUXE propose une solution rapide, premium et pensée pour l’usage quotidien.</p>
+        </div>
+
+        <div class="features-grid">
+          <article class="card">
+            <div class="icon">🧴</div>
+            <h3>Nettoyage immédiat</h3>
+            <p>Les pinceaux et outils sont nettoyés en quelques secondes sans rincage, sans eau ni matériel supplémentaire.</p>
+          </article>
+
+          <article class="card">
+            <div class="icon">✨</div>
+            <h3>Design premium</h3>
+            <p>Un produit pensé comme un accessoire beauté haut de gamme, avec une expérience visuelle séduisante et premium.</p>
+          </article>
+
+          <article class="card">
+            <div class="icon">🎯</div>
+            <h3>Usage facile</h3>
+            <p>Parfait entre deux clientes, pendant une routine make-up quotidienne ou pour les passionnées de beauté.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="market">
+      <div class="container">
+        <div class="market-wrap">
+          <div class="market-grid">
+            <div>
+              <div class="eyebrow" style="background:#1a1413; margin-bottom:16px;">Analyse du marché</div>
+              <h2 style="font-family:Georgia,serif; font-size: clamp(2rem, 2vw + 1rem, 2.9rem); margin:0 0 14px; letter-spacing:-0.04em;">Le vrai gap dans le marché beauté</h2>
+              <p style="color: var(--muted); margin:0; font-size:1.04rem;">
+                La plupart des nettoyants pour pinceaux sont complexes, salissants, peu adaptés au voyage et souvent limités à un usage centralisé.
+                TZ LUXE comble le besoin d’un produit rapide, portable et premium pour les vrais usages du quotidien.
+              </p>
+
+              <ul>
+                <li>Nettoyage lent et peu pratique.</li>
+                <li>Solutions peu adaptées au transport ou au salon.</li>
+                <li>Peu de marques qui allient hygiène, luxe et simplicité.</li>
+                <li>Fort besoin d’une routine plus rapide et plus confortable.</li>
+              </ul>
+            </div>
+
+            <div class="market-panel">
+              <h3>Positionnement stratégique</h3>
+              <div class="score-row"><span>Urgence d’usage</span><strong>92%</strong></div>
+              <div class="score-bar"><span style="width:92%"></span></div>
+
+              <div class="score-row"><span>Appel premium</span><strong>88%</strong></div>
+              <div class="score-bar"><span style="width:88%"></span></div>
+
+              <div class="score-row"><span>Accessibilité</span><strong>81%</strong></div>
+              <div class="score-bar"><span style="width:81%"></span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="bundles">
+      <div class="container">
+        <div class="section-head">
+          <h2>Stratégie de bundles</h2>
+          <p>Les bundles augmentent la valeur moyenne des commandes, renforcent le sentiment de luxe et rendent les achats plus faciles à adopter.</p>
+        </div>
+
+        <div class="bundle-grid">
+          <article class="bundle-card">
+            <div class="bundle-tag">Beginner</div>
+            <h3>Beginner Starter Kit</h3>
+            <div class="bundle-price">£24</div>
+            <p>Le meilleur point d’entrée pour découvrir la marque.</p>
+            <ul>
+              <li>Essential Brush Set</li>
+              <li>Simple Case</li>
+              <li>Mini Brush Cleaner</li>
+            </ul>
+            <a href="#" class="button button-primary" style="width:100%;">Choisir</a>
+          </article>
+
+          <article class="bundle-card highlight">
+            <div class="bundle-tag">Most Loved</div>
+            <h3>Pro Artist Starter Kit</h3>
+            <div class="bundle-price">£49</div>
+            <p>Une offre premium pensée pour les professionnels et les artistes make-up.</p>
+            <ul>
+              <li>Full Brush Set</li>
+              <li>Brush Cleaner Machine</li>
+              <li>Extra Face Brushes</li>
+            </ul>
+            <a href="#" class="button button-primary" style="width:100%; background:linear-gradient(135deg,#d7b98d 0%, #f4d7a5 100%); color:#1a1413;">Choisir</a>
+          </article>
+
+          <article class="bundle-card">
+            <div class="bundle-tag">Travel</div>
+            <h3>Travel Glam Kit</h3>
+            <div class="bundle-price">£36</div>
+            <p>Pour les déplacements, les voyages et les routines de beauté nomades.</p>
+            <ul>
+              <li>Compact Brush Set</li>
+              <li>Built-in Mirror Case with LED Light</li>
+            </ul>
+            <a href="#" class="button button-primary" style="width:100%;">Choisir</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2>Pourquoi les bundles fonctionnent</h2>
+          <p>Ils réunissent la valeur, le luxe perçu et la facilité d’achat, ce qui aide à augmenter le panier moyen et la fidélisation.</p>
+        </div>
+
+        <div class="features-grid">
+          <article class="card">
+            <div class="icon">📈</div>
+            <h3>Valeur de commande plus élevée</h3>
+            <p>Le client reçoit plus que le produit seul : des accessoires, de la praticité et un sentiment de meilleure offre.</p>
+          </article>
+
+          <article class="card">
+            <div class="icon">💎</div>
+            <h3>Luxe perçu</h3>
+            <p>Une collection cohérente donne une impression de marque premium et rend le produit plus désirable.</p>
+          </article>
+
+          <article class="card">
+            <div class="icon">🔁</div>
+            <h3>Fidélisation</h3>
+            <p>Les clients peuvent acheter plusieurs sets selon leurs besoins, leur style et leurs moments de vie.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="ideas">
+      <div class="container">
+        <div class="section-head">
+          <h2>Idées produit qui répondent à des vrais gaps du marché</h2>
+          <p>Ces ajouts créent des opportunités de croissance dans la catégorie beauté, hygiène et accessoires premium.</p>
+        </div>
+
+        <div class="idea-grid">
+          <article class="idea-card">
+            <div class="idea-num">1</div>
+            <small>Quick Dry Brush Cleaner Spray</small>
+            <h3>TZ LUXE Instant Cleanse</h3>
+            <p>Le marché manque de solution rapide, portable et premium pour nettoyer les pinceaux sans rinçage ni saleté.</p>
+            <ul class="paint-list">
+              <li>Nettoie en quelques secondes</li>
+              <li>Sans rinçage</li>
+              <li>Idéal entre deux clients</li>
+              <li>Cible : MUAs et utilisatrices quotidiennes</li>
+            </ul>
+          </article>
+
+          <article class="idea-card">
+            <div class="idea-num">2</div>
+            <small>Face-specific Brush Sets</small>
+            <h3>Mini sets ciblés</h3>
+            <p>Des kits de petite taille permettent d’entrer plus facilement dans le marché tout en favorisant l’achat multiple.</p>
+            <ul class="paint-list">
+              <li>Complexion Perfection Set</li>
+              <li>Soft Glam Eye Set</li>
+              <li>Contour & Sculpt Set</li>
+              <li>Entry point plus accessible</li>
+            </ul>
+          </article>
+
+          <article class="idea-card">
+            <div class="idea-num">3</div>
+            <small>Hygiene Accessories</small>
+            <h3>Accessoires d’hygiène premium</h3>
+            <p>Le marché est encore très vide sur l’hygiène des outils de beauté, qui est essentielle pour éviter les bactéries.</p>
+            <ul class="paint-list">
+              <li>Luxury Silicone Brush Drying Mats</li>
+              <li>Brush Protector Sleeves</li>
+              <li>Antibacterial storage pouch</li>
+              <li>Replaceable brush head</li>
+            </ul>
+          </article>
+
+          <article class="idea-card">
+            <div class="idea-num">4</div>
+            <small>Luxury Makeup Sponges</small>
+            <h3>Éponges premium sans gaspillage</h3>
+            <p>Des éponges plus fonctionnelles, plus élégantes et plus durables, conçues pour un fini impeccable.</p>
+            <ul class="paint-list">
+              <li>Dual-texture sponge</li>
+              <li>Dark toned sponge</li>
+              <li>Storage case ventilated</li>
+              <li>Bundle sponge + cleanser</li>
+            </ul>
+          </article>
+
+          <article class="idea-card">
+            <div class="idea-num">5</div>
+            <small>Beginner Education</small>
+            <h3>Guide beauté pour débutantes</h3>
+            <p>Les clients ont besoin d’accompagnement : cartes d’utilisation, QR codes et mini guides de formation.</p>
+            <ul class="paint-list">
+              <li>Brush usage cards</li>
+              <li>QR code TikTok/Instagram/YouTube</li>
+              <li>Beginner Beauty Guide booklet</li>
+              <li>Support éducatif premium</li>
+            </ul>
+          </article>
+
+          <article class="idea-card">
+            <div class="idea-num">6</div>
+            <small>Luxury Travel Accessories</small>
+            <h3>Accessoires de voyage haut de gamme</h3>
+            <p>Cette catégorie répond à une demande forte pour des objets pratiques, luxueux et facilement transportables.</p>
+            <ul class="paint-list">
+              <li>Approved brush cleaner bottles</li>
+              <li>Mini LED compact mirror</li>
+              <li>Travel brush roll with magnetic closure</li>
+              <li>Protective brush caps</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2>Comment ça marche</h2>
+          <p>Le produit est pensé pour une utilisation simple, rapide et compatible avec la vie quotidienne des clientes et des artistes.</p>
+        </div>
+
+        <div class="steps-grid">
+          <div class="step-box">
+            <div class="step-step">1</div>
+            <h3>Choisir</h3>
+            <p>Un kit adapté à son besoin : débutante, pro ou voyage.</p>
+          </div>
+          <div class="step-box">
+            <div class="step-step">2</div>
+            <h3>Vaporiser</h3>
+            <p>Quelques secondes pour nettoyer les outils sans gaspillage.</p>
+          </div>
+          <div class="step-box">
+            <div class="step-step">3</div>
+            <h3>Sécher</h3>
+            <p>Pas de rinçage ni de procédure longue à suivre.</p>
+          </div>
+          <div class="step-box">
+            <div class="step-step">4</div>
+            <h3>Reprendre</h3>
+            <p>Retour direct à la routine beauté, sans interruption.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="testimonials">
+      <div class="container">
+        <div class="section-head">
+          <h2>Les retours de la clientèle</h2>
+          <p>Des avis qui confirment l’intérêt pour des produits plus rapides, plus fiables et plus premium.</p>
+        </div>
+
+        <div class="testimonials-grid">
+          <article class="quote">
+            <div class="stars">★★★★★</div>
+            <p>“Enfin une solution qui nettoie mes pinceaux sans me faire perdre mon temps entre deux clients.”</p>
+            <strong>— Nina, esthéticienne</strong>
+          </article>
+
+          <article class="quote">
+            <div class="stars">★★★★★</div>
+            <p>“J’ai adoré le concept premium et la simplicité d’utilisation. Le bundle pro est parfait.”</p>
+            <strong>— Emma, beauty studio</strong>
+          </article>
+
+          <article class="quote">
+            <div class="stars">★★★★★</div>
+            <p>“J’utilise ça tous les jours. C’est devenu un indispensable dans ma routine make-up.”</p>
+            <strong>— Sofia, passionnée de beauté</strong>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="cta-banner">
+          <div>
+            <div class="eyebrow" style="background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12); color:#f4d39d; margin-bottom:16px;">Surprise Experience</div>
+            <h2 style="font-family:Georgia,serif; font-size: clamp(2rem, 2vw + 1rem, 2.9rem); margin:0 0 8px; letter-spacing:-0.04em;">Une récompense cachée vous attend.</h2>
+            <p style="color: rgba(255,255,255,0.78); margin:0; max-width: 560px;">Cliquez sur le bouton central pour révéler une promo exceptionnelle inspirée de l’effet de révélation des contenus TikTok et du QR code packaging.</p>
+          </div>
+
+          <div class="reveal-box">
+            <button class="surprise-button" id="surpriseBtn">Découvrir</button>
+            <div class="reveal-message" id="revealMessage">
+              <h3>Offre spéciale ✨</h3>
+              <p>-10% sur votre prochain pack premium.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2>Boutique & commande</h2>
+          <p>Ajoutez un produit ou un bundle au panier, remplissez vos informations et validez votre commande. La gestion des commandes est enregistrée localement dans le navigateur.</p>
+        </div>
+
+        <div class="shop-grid" id="productsGrid"></div>
+      </div>
+    </section>
+
+    <section class="section" id="faq">
+      <div class="container">
+        <div class="section-head">
+          <h2>Questions fréquentes</h2>
+        </div>
+
+        <div class="faq-grid">
+          <article class="faq-item">
+            <h4>Le spray convient-il à tous les pinceaux ?</h4>
+            <p>Oui, il est conçu pour les pinceaux et outils de beauté courants, y compris les pinceaux de maquillage et de finition.</p>
+          </article>
+
+          <article class="faq-item">
+            <h4>Peut-on l’utiliser tous les jours ?</h4>
+            <p>Oui, c’est précisément pensé pour un usage quotidien, qu’il soit personnel ou professionnel.</p>
+          </article>
+
+          <article class="faq-item">
+            <h4>Le produit est-il adapté au salon ?</h4>
+            <p>Oui, le kit pro est spécialement conçu pour les professionnels qui ont besoin d’un entretien rapide et régulier.</p>
+          </article>
+
+          <article class="faq-item">
+            <h4>Comment accéder aux tutoriels ?</h4>
+            <p>Via QR code, mini guide inclus et accès aux vidéos TikTok, Instagram et YouTube.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <aside class="cart-panel" id="cartPanel" aria-label="Panier">
+    <div class="cart-header">
+      <h3>Panier</h3>
+      <button class="close-cart" id="closeCart" type="button" aria-label="Fermer le panier">×</button>
+    </div>
+
+    <div class="cart-items" id="cartItems"></div>
+
+    <div class="cart-summary">
+      <div class="summary-total">
+        <span>Total</span>
+        <span id="cartTotal">0 FCFA</span>
+      </div>
+
+      <form class="checkout-form" id="checkoutForm">
+        <input type="text" name="fullName" placeholder="Nom complet" required />
+        <div class="double">
+          <input type="tel" name="phone" placeholder="Téléphone" required />
+          <input type="email" name="email" placeholder="Email" required />
+        </div>
+        <input type="text" name="city" placeholder="Ville" required />
+        <textarea name="address" placeholder="Adresse complète" required></textarea>
+        <select name="delivery" required>
+          <option value="">Mode de livraison</option>
+          <option value="Livraison locale">Livraison locale</option>
+          <option value="Livraison express">Livraison express</option>
+          <option value="Retrait">Retrait</option>
+        </select>
+        <button type="submit" class="button button-primary" style="width:100%;">Valider la commande</button>
+      </form>
+
+      <div class="order-message" id="orderMessage"></div>
+    </div>
+  </aside>
+
+  <footer>
+    <div class="container footer-inner">
+      <div class="brand">TZ LUXE</div>
+      <div>Designed in London — Beauty tools made simple.</div>
+      <div>© <span id="year"></span> TZ LUXE</div>
+    </div>
+  </footer>
+
+  <script>
+    const products = [
+      { id: 'instant-cleanse', name: 'TZ LUXE Instant Cleanse', price: 12000, tag: 'Spray', description: 'Nettoyage rapide sans rinçage' },
+      { id: 'beginner-bundle', name: 'Beginner Starter Kit', price: 24000, tag: 'Beginner', description: 'Essential Brush Set + Simple Case + Mini Cleaner' },
+      { id: 'pro-bundle', name: 'Pro Artist Starter Kit', price: 49000, tag: 'Pro', description: 'Full Brush Set + Brush Cleaner Machine + Extra Face Brushes' },
+      { id: 'travel-kit', name: 'Travel Glam Kit', price: 36000, tag: 'Travel', description: 'Compact Brush Set + LED mirror case' },
+      { id: 'complexion-set', name: 'Complexion Perfection Set', price: 18000, tag: 'Mini Set', description: 'Foundation + Concealer + Powder + Blending Brush' },
+      { id: 'eye-set', name: 'Soft Glam Eye Set', price: 16000, tag: 'Mini Set', description: 'Palette d’outils pour les yeux' }
+    ];
+
+    const cartKey = 'tzluxe_cart';
+    const ordersKey = 'tzluxe_orders';
+    let cart = JSON.parse(localStorage.getItem(cartKey) || '[]');
+
+    const productGrid = document.getElementById('productsGrid');
+    const cartItems = document.getElementById('cartItems');
+    const cartTotal = document.getElementById('cartTotal');
+    const cartCount = document.getElementById('cartCount');
+    const cartPanel = document.getElementById('cartPanel');
+    const checkoutForm = document.getElementById('checkoutForm');
+    const orderMessage = document.getElementById('orderMessage');
+
+    function formatPrice(value) {
+      return `${Number(value).toLocaleString('fr-FR')} FCFA`;
+    }
+
+    function saveCart() {
+      localStorage.setItem(cartKey, JSON.stringify(cart));
+      renderCart();
+    }
+
+    function renderProducts() {
+      productGrid.innerHTML = products.map(product => `
+        <article class="shop-card">
+          <span class="tag">${product.tag}</span>
+          <h3>${product.name}</h3>
+          <p>${product.description}</p>
+          <div class="price">${formatPrice(product.price)}</div>
+          <button class="button button-primary add-btn" data-product-id="${product.id}" type="button">Ajouter au panier</button>
+        </article>
+      `).join('');
+    }
+
+    function addToCart(productId) {
+      const product = products.find(item => item.id === productId);
+      if (!product) return;
+
+      const existing = cart.find(item => item.id === productId);
+      if (existing) {
+        existing.qty += 1;
+      } else {
+        cart.push({ id: productId, qty: 1 });
+      }
+
+      saveCart();
+      cartPanel.classList.add('open');
+    }
+
+    function changeQuantity(productId, delta) {
+      const item = cart.find(entry => entry.id === productId);
+      if (!item) return;
+
+      item.qty += delta;
+      if (item.qty <= 0) {
+        cart = cart.filter(entry => entry.id !== productId);
+      }
+
+      saveCart();
+    }
+
+    function renderCart() {
+      const total = cart.reduce((sum, item) => {
+        const product = products.find(entry => entry.id === item.id);
+        return sum + (product ? product.price * item.qty : 0);
+      }, 0);
+
+      cartCount.textContent = cart.reduce((sum, item) => sum + item.qty, 0);
+      cartTotal.textContent = formatPrice(total);
+
+      if (!cart.length) {
+        cartItems.innerHTML = '<div class="cart-item"><div><h4>Votre panier est vide</h4><div class="meta">Ajoutez un produit pour commencer.</div></div></div>';
+        return;
+      }
+
+      cartItems.innerHTML = cart.map(item => {
+        const product = products.find(entry => entry.id === item.id);
+        if (!product) return '';
+        return `
+          <div class="cart-item">
+            <div>
+              <h4>${product.name}</h4>
+              <div class="meta">${formatPrice(product.price)} / unité</div>
+              <div class="qty-box">
+                <button type="button" data-action="minus" data-product-id="${product.id}">−</button>
+                <span>${item.qty}</span>
+                <button type="button" data-action="plus" data-product-id="${product.id}">+</button>
+              </div>
+            </div>
+            <div style="font-weight:700; align-self:center;">${formatPrice(product.price * item.qty)}</div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    productGrid.addEventListener('click', (event) => {
+      const btn = event.target.closest('.add-btn');
+      if (!btn) return;
+      addToCart(btn.dataset.productId);
+    });
+
+    cartItems.addEventListener('click', (event) => {
+      const actionBtn = event.target.closest('[data-action]');
+      if (!actionBtn) return;
+
+      const { action, productId } = actionBtn.dataset;
+      if (action === 'plus') changeQuantity(productId, 1);
+      if (action === 'minus') changeQuantity(productId, -1);
+    });
+
+    document.getElementById('cartToggle').addEventListener('click', () => {
+      cartPanel.classList.toggle('open');
+    });
+
+    document.getElementById('closeCart').addEventListener('click', () => {
+      cartPanel.classList.remove('open');
+    });
+
+    checkoutForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+
+      if (!cart.length) {
+        orderMessage.textContent = 'Votre panier est vide.';
+        orderMessage.classList.add('show');
+        return;
+      }
+
+      const formData = new FormData(checkoutForm);
+      const customer = {
+        fullName: formData.get('fullName'),
+        phone: formData.get('phone'),
+        email: formData.get('email'),
+        city: formData.get('city'),
+        address: formData.get('address'),
+        delivery: formData.get('delivery'),
+      };
+
+      const total = cart.reduce((sum, item) => {
+        const product = products.find(entry => entry.id === item.id);
+        return sum + (product ? product.price * item.qty : 0);
+      }, 0);
+
+      const orders = JSON.parse(localStorage.getItem(ordersKey) || '[]');
+      const order = {
+        id: `TZ-${Date.now()}`,
+        status: 'Nouveau',
+        createdAt: new Date().toISOString(),
+        customer,
+        items: cart.map(item => {
+          const product = products.find(entry => entry.id === item.id);
+          return {
+            id: item.id,
+            name: product ? product.name : 'Produit',
+            qty: item.qty,
+            price: product ? product.price : 0,
+          };
+        }),
+        total
+      };
+
+      orders.push(order);
+      localStorage.setItem(ordersKey, JSON.stringify(orders));
+
+      cart = [];
+      localStorage.setItem(cartKey, JSON.stringify(cart));
+      renderCart();
+      checkoutForm.reset();
+      orderMessage.textContent = `Commande enregistrée avec succès. Référence : ${order.id}`;
+      orderMessage.classList.add('show');
+    });
+
+    const surpriseBtn = document.getElementById('surpriseBtn');
+    const revealMessage = document.getElementById('revealMessage');
+
+    surpriseBtn.addEventListener('click', () => {
+      revealMessage.classList.toggle('show');
+      surpriseBtn.style.display = revealMessage.classList.contains('show') ? 'none' : 'block';
+    });
+
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('from') === 'qr') {
+      const topbar = document.querySelector('.topbar');
+      const banner = document.createElement('div');
+      banner.style.background = '#d4a86d';
+      banner.style.color = '#1a1413';
+      banner.style.textAlign = 'center';
+      banner.style.fontWeight = '700';
+      banner.style.letterSpacing = '0.08em';
+      banner.style.textTransform = 'uppercase';
+      banner.style.padding = '10px 16px';
+      banner.style.fontSize = '12px';
+      banner.textContent = 'Bienvenue depuis le QR code TZ LUXE';
+      document.body.insertBefore(banner, topbar);
+    }
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+    renderProducts();
+    renderCart();
+  </script>
+</body>
+</html>

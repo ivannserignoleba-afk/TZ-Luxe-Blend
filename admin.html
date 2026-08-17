@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TZ LUXE Admin</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f5efe9;
+      color: #1d1716;
+    }
+    .container {
+      width: min(1200px, calc(100% - 24px));
+      margin: 0 auto;
+      padding: 28px 0 50px;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    h1 {
+      margin: 0;
+      font-family: Georgia, serif;
+      font-size: clamp(2rem, 2vw + 1rem, 2.7rem);
+    }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 18px;
+      border: none;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #d3a86d, #9d7742);
+      color: #fff;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .panel {
+      background: rgba(255,255,255,0.75);
+      border: 1px solid #eaded0;
+      border-radius: 22px;
+      padding: 22px;
+      box-shadow: 0 12px 30px rgba(29, 19, 15, 0.04);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 18px;
+    }
+    th, td {
+      text-align: left;
+      padding: 12px 10px;
+      border-bottom: 1px solid #eaded0;
+      vertical-align: top;
+    }
+    th {
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #6f625d;
+    }
+    .status {
+      display: inline-block;
+      padding: 7px 10px;
+      border-radius: 999px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      background: #f3e8de;
+      color: #6d4c2d;
+    }
+    .empty {
+      color: #665d58;
+      padding: 18px 0;
+    }
+    .controls {
+      display:flex;
+      gap:8px;
+      align-items:center;
+      margin: 12px 0 18px;
+      flex-wrap:wrap;
+    }
+    .input {
+      padding:10px 12px;
+      border-radius:10px;
+      border:1px solid #eaded0;
+      background: #fff;
+    }
+    .small {
+      padding:6px 10px;
+      font-size:0.85rem;
+      border-radius:10px;
+    }
+    .action-btn {
+      padding:6px 10px;
+      border-radius:8px;
+      border:none;
+      cursor:pointer;
+      background:#fff;
+      border:1px solid #eaded0;
+    }
+    @media (max-width: 700px) {
+      table, thead, tbody, th, td, tr {
+        display: block;
+      }
+      thead { display: none; }
+      tr { border: 1px solid #eaded0; border-radius: 16px; margin-bottom: 12px; padding: 12px; }
+      td { border: none; padding: 8px 0; }
+      td::before {
+        content: attr(data-label);
+        display: block;
+        font-size: 0.7rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: #6f625d;
+        margin-bottom: 4px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Gestion des commandes TZ LUXE</h1>
+      <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
+        <a class="button" href="index.html">Retour boutique</a>
+        <button class="button" id="logoutBtn" type="button" style="background: linear-gradient(135deg, #3a2e2a, #1d1716);">Déconnexion</button>
+      </div>
+    </header>
+
+    <div class="panel">
+      <div>Commandes enregistrées localement</div>
+      <table>
+        <thead>
+          <tr>
+      <div class="controls">
+        <input id="searchInput" class="input" placeholder="Rechercher par réf, client ou produit" />
+        <button id="addTestBtn" class="action-btn small">Ajouter commande test</button>
+        <button id="exportBtn" class="action-btn small">Exporter</button>
+        <input id="importFile" type="file" accept="application/json" style="display:none" />
+        <button id="importBtn" class="action-btn small">Importer</button>
+      </div>
+            <th>Réf</th>
+            <th>Client</th>
+            <th>Contact</th>
+            <th>Produit</th>
+            <th>Total</th>
+            <th>Statut</th>
+          </tr>
+        </thead>
+            <th>Statut</th>
+            <th>Actions</th>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    const ordersKey = 'tzluxe_orders';
+    const sessionKey = 'tzluxe_owner_session';
+    const ordersTable = document.getElementById('ordersTable');
+    const logoutBtn = document.getElementById('logoutBtn');
+
+    if (localStorage.getItem(sessionKey) !== 'true') {
+      window.location.href = 'login.html';
+    const searchInput = document.getElementById('searchInput');
+    const addTestBtn = document.getElementById('addTestBtn');
+    const exportBtn = document.getElementById('exportBtn');
+    const importBtn = document.getElementById('importBtn');
+    const importFile = document.getElementById('importFile');
+
+    const STATUSES = ['Nouveau','Traitement','Expédiée','Annulé'];
+    }
+
+    logoutBtn.addEventListener('click', () => {
+      localStorage.removeItem(sessionKey);
+      window.location.href = 'login.html';
+    });
+
+    function renderOrders() {
+      const orders = JSON.parse(localStorage.getItem(ordersKey) || '[]');
+
+      if (!orders.length) {
+        ordersTable.innerHTML = '<tr><td colspan="6" class="empty">Aucune commande enregistrée pour le moment.</td></tr>';
+      const filtered = orders.filter(o => {
+        const customer = (o.customer && (o.customer.fullName || '')).toLowerCase();
+        const items = (o.items || []).map(i => i.name).join(' ').toLowerCase();
+        const id = (o.id || '').toLowerCase();
+        const q = filter.toLowerCase();
+        return !q || id.includes(q) || customer.includes(q) || items.includes(q);
+      });
+        return;
+      if (!filtered.length) {
+        ordersTable.innerHTML = '<tr><td colspan="7" class="empty">Aucune commande enregistrée pour le moment.</td></tr>';
+      ordersTable.innerHTML = orders.map(order => {
+        const items = order.items.map(item => `${item.name} x${item.qty}`).join(', ');
+        const customer = order.customer || {};
+      ordersTable.innerHTML = filtered.map(order => {
+          <tr>
+            <td data-label="Réf">${order.id}</td>
+            <td data-label="Client">${customer.fullName || '-'}</td>
+            <td data-label="Contact">${customer.phone || '-'}<br>${customer.email || '-'}</td>
+            <td data-label="Produit">${items}</td>
+            <td data-label="Total">${Number(order.total).toLocaleString('fr-FR')} FCFA</td>
+            <td data-label="Statut"><span class="status">${order.status || 'Nouveau'}</span></td>
+          </tr>
+        `;
+            <td data-label="Statut"><span class="status">${order.status || 'Nouveau'}</span></td>
+            <td data-label="Actions">
+              <button class="action-btn small" onclick="toggleStatus('${order.id}')">Changer statut</button>
+              <button class="action-btn small" onclick="deleteOrder('${order.id}')" style="margin-left:6px;color:#9d2b2b;border-color:#f2dede">Supprimer</button>
+            </td>
+    }
+
+    renderOrders();
+  </script>
+
+    function saveOrders(orders) {
+      localStorage.setItem(ordersKey, JSON.stringify(orders));
+      renderOrders(searchInput.value || '');
+    }
+
+    function toggleStatus(id) {
+      const orders = JSON.parse(localStorage.getItem(ordersKey) || '[]');
+      const idx = orders.findIndex(o=>o.id===id);
+      if (idx === -1) return;
+      const current = orders[idx].status || STATUSES[0];
+      const next = STATUSES[(STATUSES.indexOf(current) + 1) % STATUSES.length] || STATUSES[0];
+      orders[idx].status = next;
+      saveOrders(orders);
+    }
+
+    function deleteOrder(id) {
+      if (!confirm('Supprimer cette commande ?')) return;
+      const orders = JSON.parse(localStorage.getItem(ordersKey) || '[]');
+      const remaining = orders.filter(o=>o.id!==id);
+      saveOrders(remaining);
+    }
+
+    function addTestOrder() {
+      const orders = JSON.parse(localStorage.getItem(ordersKey) || '[]');
+      const id = 'ORD' + Date.now();
+      const sample = {
+        id,
+        customer: { fullName: 'Client Test', phone: '77 000 00 00', email: 'test@example.com' },
+        items: [{ name: 'Sérum', qty: 1 }, { name: 'Rouge à lèvres', qty: 2 }],
+        total: 45000,
+        status: 'Nouveau'
+      };
+      orders.unshift(sample);
+      saveOrders(orders);
+    }
+
+    function exportOrders() {
+      const orders = localStorage.getItem(ordersKey) || '[]';
+      const blob = new Blob([orders], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'tzluxe_orders.json';
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+    }
+
+    function importOrdersFromFile(file) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        try {
+          const parsed = JSON.parse(e.target.result || '[]');
+          if (!Array.isArray(parsed)) throw new Error('Format invalide');
+          saveOrders(parsed);
+          alert('Importation terminée');
+        } catch (err) {
+          alert('Fichier invalide');
+        }
+      };
+      reader.readAsText(file);
+    }
+
+    // Expose small helpers to inline onclick handlers
+    window.toggleStatus = toggleStatus;
+    window.deleteOrder = deleteOrder;
+
+</body>
+
+    // Event listeners
+    searchInput.addEventListener('input', (e) => renderOrders(e.target.value));
+    addTestBtn.addEventListener('click', addTestOrder);
+    exportBtn.addEventListener('click', exportOrders);
+    importBtn.addEventListener('click', ()=> importFile.click());
+    importFile.addEventListener('change', (e) => {
+      const f = e.target.files && e.target.files[0];
+      if (f) importOrdersFromFile(f);
+      importFile.value = '';
+    });
+</html>
