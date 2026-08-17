@@ -134,170 +134,192 @@
       </div>
     </header>
 
-    <div class="panel">
-      <div>Commandes enregistrées localement</div>
-      <table>
-        <thead>
-          <tr>
-      <div class="controls">
-        <input id="searchInput" class="input" placeholder="Rechercher par réf, client ou produit" />
-        <button id="addTestBtn" class="action-btn small">Ajouter commande test</button>
-        <button id="exportBtn" class="action-btn small">Exporter</button>
-        <input id="importFile" type="file" accept="application/json" style="display:none" />
-        <button id="importBtn" class="action-btn small">Importer</button>
+      <div class="panel">
+        <div>Commandes enregistrées localement</div>
+        <div class="controls">
+          <input id="searchInput" class="input" placeholder="Rechercher par réf, client ou produit" />
+          <button id="addTestBtn" class="action-btn small">Ajouter commande test</button>
+          <button id="exportBtn" class="action-btn small">Exporter</button>
+          <input id="importFile" type="file" accept="application/json" style="display:none" />
+          <button id="importBtn" class="action-btn small">Importer</button>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>Réf</th>
+              <th>Client</th>
+              <th>Contact</th>
+              <th>Produit</th>
+              <th>Total</th>
+              <th>Statut</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="ordersTable">
+            <tr><td colspan="7" class="empty">Chargement...</td></tr>
+          </tbody>
+        </table>
       </div>
-            <th>Réf</th>
-            <th>Client</th>
-            <th>Contact</th>
-            <th>Produit</th>
-            <th>Total</th>
-            <th>Statut</th>
-          </tr>
-        </thead>
-            <th>Statut</th>
-            <th>Actions</th>
-      </table>
-    </div>
   </div>
 
   <script>
-    const ordersKey = 'tzluxe_orders';
-    const sessionKey = 'tzluxe_owner_session';
-    const ordersTable = document.getElementById('ordersTable');
-    const logoutBtn = document.getElementById('logoutBtn');
+    (function () {
+      const ordersKey = 'tzluxe_orders';
+      const sessionKey = 'tzluxe_owner_session';
+      const ordersTable = document.getElementById('ordersTable');
+      const logoutBtn = document.getElementById('logoutBtn');
+      const searchInput = document.getElementById('searchInput');
+      const addTestBtn = document.getElementById('addTestBtn');
+      const exportBtn = document.getElementById('exportBtn');
+      const importBtn = document.getElementById('importBtn');
+      const importFile = document.getElementById('importFile');
 
-    if (localStorage.getItem(sessionKey) !== 'true') {
-      window.location.href = 'login.html';
-    const searchInput = document.getElementById('searchInput');
-    const addTestBtn = document.getElementById('addTestBtn');
-    const exportBtn = document.getElementById('exportBtn');
-    const importBtn = document.getElementById('importBtn');
-    const importFile = document.getElementById('importFile');
+      const STATUSES = ['Nouveau','Traitement','Expédiée','Annulé'];
 
-    const STATUSES = ['Nouveau','Traitement','Expédiée','Annulé'];
-    }
-
-    logoutBtn.addEventListener('click', () => {
-      localStorage.removeItem(sessionKey);
-      window.location.href = 'login.html';
-    });
-
-    function renderOrders() {
-      const orders = JSON.parse(localStorage.getItem(ordersKey) || '[]');
-
-      if (!orders.length) {
-        ordersTable.innerHTML = '<tr><td colspan="6" class="empty">Aucune commande enregistrée pour le moment.</td></tr>';
-      const filtered = orders.filter(o => {
-        const customer = (o.customer && (o.customer.fullName || '')).toLowerCase();
-        const items = (o.items || []).map(i => i.name).join(' ').toLowerCase();
-        const id = (o.id || '').toLowerCase();
-        const q = filter.toLowerCase();
-        return !q || id.includes(q) || customer.includes(q) || items.includes(q);
-      });
+      if (localStorage.getItem(sessionKey) !== 'true') {
+        window.location.href = 'login.html';
         return;
-      if (!filtered.length) {
-        ordersTable.innerHTML = '<tr><td colspan="7" class="empty">Aucune commande enregistrée pour le moment.</td></tr>';
-      ordersTable.innerHTML = orders.map(order => {
-        const items = order.items.map(item => `${item.name} x${item.qty}`).join(', ');
-        const customer = order.customer || {};
-      ordersTable.innerHTML = filtered.map(order => {
-          <tr>
-            <td data-label="Réf">${order.id}</td>
-            <td data-label="Client">${customer.fullName || '-'}</td>
-            <td data-label="Contact">${customer.phone || '-'}<br>${customer.email || '-'}</td>
-            <td data-label="Produit">${items}</td>
-            <td data-label="Total">${Number(order.total).toLocaleString('fr-FR')} FCFA</td>
-            <td data-label="Statut"><span class="status">${order.status || 'Nouveau'}</span></td>
-          </tr>
-        `;
-            <td data-label="Statut"><span class="status">${order.status || 'Nouveau'}</span></td>
-            <td data-label="Actions">
-              <button class="action-btn small" onclick="toggleStatus('${order.id}')">Changer statut</button>
-              <button class="action-btn small" onclick="deleteOrder('${order.id}')" style="margin-left:6px;color:#9d2b2b;border-color:#f2dede">Supprimer</button>
-            </td>
-    }
+      }
 
-    renderOrders();
-  </script>
+      logoutBtn.addEventListener('click', () => {
+        localStorage.removeItem(sessionKey);
+        window.location.href = 'login.html';
+      });
 
-    function saveOrders(orders) {
-      localStorage.setItem(ordersKey, JSON.stringify(orders));
-      renderOrders(searchInput.value || '');
-    }
-
-    function toggleStatus(id) {
-      const orders = JSON.parse(localStorage.getItem(ordersKey) || '[]');
-      const idx = orders.findIndex(o=>o.id===id);
-      if (idx === -1) return;
-      const current = orders[idx].status || STATUSES[0];
-      const next = STATUSES[(STATUSES.indexOf(current) + 1) % STATUSES.length] || STATUSES[0];
-      orders[idx].status = next;
-      saveOrders(orders);
-    }
-
-    function deleteOrder(id) {
-      if (!confirm('Supprimer cette commande ?')) return;
-      const orders = JSON.parse(localStorage.getItem(ordersKey) || '[]');
-      const remaining = orders.filter(o=>o.id!==id);
-      saveOrders(remaining);
-    }
-
-    function addTestOrder() {
-      const orders = JSON.parse(localStorage.getItem(ordersKey) || '[]');
-      const id = 'ORD' + Date.now();
-      const sample = {
-        id,
-        customer: { fullName: 'Client Test', phone: '77 000 00 00', email: 'test@example.com' },
-        items: [{ name: 'Sérum', qty: 1 }, { name: 'Rouge à lèvres', qty: 2 }],
-        total: 45000,
-        status: 'Nouveau'
-      };
-      orders.unshift(sample);
-      saveOrders(orders);
-    }
-
-    function exportOrders() {
-      const orders = localStorage.getItem(ordersKey) || '[]';
-      const blob = new Blob([orders], { type: 'application/json' });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = 'tzluxe_orders.json';
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
-      URL.revokeObjectURL(url);
-    }
-
-    function importOrdersFromFile(file) {
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        try {
-          const parsed = JSON.parse(e.target.result || '[]');
-          if (!Array.isArray(parsed)) throw new Error('Format invalide');
-          saveOrders(parsed);
-          alert('Importation terminée');
-        } catch (err) {
-          alert('Fichier invalide');
+      function renderOrders(filter = '') {
+        const orders = JSON.parse(localStorage.getItem(ordersKey) || '[]');
+        if (!orders.length) {
+          ordersTable.innerHTML = '<tr><td colspan="7" class="empty">Aucune commande enregistrée pour le moment.</td></tr>';
+          return;
         }
-      };
-      reader.readAsText(file);
-    }
 
-    // Expose small helpers to inline onclick handlers
-    window.toggleStatus = toggleStatus;
-    window.deleteOrder = deleteOrder;
+        const q = (filter || '').toLowerCase();
+        const filtered = orders.filter(o => {
+          const customer = (o.customer && (o.customer.fullName || '')).toLowerCase();
+          const items = (o.items || []).map(i => i.name).join(' ').toLowerCase();
+          const id = (o.id || '').toLowerCase();
+          return !q || id.includes(q) || customer.includes(q) || items.includes(q);
+        });
+
+        if (!filtered.length) {
+          ordersTable.innerHTML = '<tr><td colspan="7" class="empty">Aucune commande correspondante.</td></tr>';
+          return;
+        }
+
+        ordersTable.innerHTML = filtered.map(order => {
+          const items = (order.items || []).map(item => `${item.name} x${item.qty}`).join(', ');
+          const customer = order.customer || {};
+          return `
+            <tr>
+              <td data-label="Réf">${order.id}</td>
+              <td data-label="Client">${customer.fullName || '-'}</td>
+              <td data-label="Contact">${customer.phone || '-'}<br>${customer.email || '-'}</td>
+              <td data-label="Produit">${items}</td>
+              <td data-label="Total">${Number(order.total || 0).toLocaleString('fr-FR')} FCFA</td>
+              <td data-label="Statut"><span class="status">${order.status || 'Nouveau'}</span></td>
+              <td data-label="Actions">
+                <button class="action-btn small" data-id="${order.id}" data-action="toggle">Changer statut</button>
+                <button class="action-btn small" data-id="${order.id}" data-action="delete" style="margin-left:6px;color:#9d2b2b;border-color:#f2dede">Supprimer</button>
+              </td>
+            </tr>
+          `;
+        }).join('');
+      }
+
+      function saveOrders(orders) {
+        localStorage.setItem(ordersKey, JSON.stringify(orders));
+        renderOrders(searchInput.value || '');
+      }
+
+      function toggleStatus(id) {
+        const orders = JSON.parse(localStorage.getItem(ordersKey) || '[]');
+        const idx = orders.findIndex(o => o.id === id);
+        if (idx === -1) return;
+        const current = orders[idx].status || STATUSES[0];
+        const next = STATUSES[(STATUSES.indexOf(current) + 1) % STATUSES.length] || STATUSES[0];
+        orders[idx].status = next;
+        saveOrders(orders);
+      }
+
+      function deleteOrder(id) {
+        if (!confirm('Supprimer cette commande ?')) return;
+        const orders = JSON.parse(localStorage.getItem(ordersKey) || '[]');
+        const remaining = orders.filter(o => o.id !== id);
+        saveOrders(remaining);
+      }
+
+      function addTestOrder() {
+        const orders = JSON.parse(localStorage.getItem(ordersKey) || '[]');
+        const id = 'ORD' + Date.now();
+        const sample = {
+          id,
+          customer: { fullName: 'Client Test', phone: '77 000 00 00', email: 'test@example.com' },
+          items: [{ name: 'Sérum', qty: 1 }, { name: 'Rouge à lèvres', qty: 2 }],
+          total: 45000,
+          status: 'Nouveau'
+        };
+        orders.unshift(sample);
+        saveOrders(orders);
+      }
+
+      function exportOrders() {
+        const orders = localStorage.getItem(ordersKey) || '[]';
+        const blob = new Blob([orders], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'tzluxe_orders.json';
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        URL.revokeObjectURL(url);
+      }
+
+      function importOrdersFromFile(file) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          try {
+            const parsed = JSON.parse(e.target.result || '[]');
+            if (!Array.isArray(parsed)) throw new Error('Format invalide');
+            saveOrders(parsed);
+            alert('Importation terminée');
+          } catch (err) {
+            alert('Fichier invalide');
+          }
+        };
+        reader.readAsText(file);
+      }
+
+      // delegate actions
+      document.addEventListener('click', (e) => {
+        const btn = e.target.closest('[data-action]');
+        if (!btn) return;
+        const id = btn.dataset.id;
+        const action = btn.dataset.action;
+        if (action === 'toggle') toggleStatus(id);
+        if (action === 'delete') deleteOrder(id);
+      });
+
+      // expose helpers (for console)
+      window.toggleStatus = toggleStatus;
+      window.deleteOrder = deleteOrder;
+
+      // events
+      searchInput.addEventListener('input', (e) => renderOrders(e.target.value));
+      addTestBtn.addEventListener('click', addTestOrder);
+      exportBtn.addEventListener('click', exportOrders);
+      importBtn.addEventListener('click', () => importFile.click());
+      importFile.addEventListener('change', (e) => {
+        const f = e.target.files && e.target.files[0];
+        if (f) importOrdersFromFile(f);
+        importFile.value = '';
+      });
+
+      // initial render
+      renderOrders();
+    })();
+  </script>
 
 </body>
 
-    // Event listeners
-    searchInput.addEventListener('input', (e) => renderOrders(e.target.value));
-    addTestBtn.addEventListener('click', addTestOrder);
-    exportBtn.addEventListener('click', exportOrders);
-    importBtn.addEventListener('click', ()=> importFile.click());
-    importFile.addEventListener('change', (e) => {
-      const f = e.target.files && e.target.files[0];
-      if (f) importOrdersFromFile(f);
-      importFile.value = '';
-    });
 </html>
