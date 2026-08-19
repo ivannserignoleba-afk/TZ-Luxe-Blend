@@ -131,75 +131,59 @@ a {
 .header-actions {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
 }
 
-/*
-  Les deux boutons ont exactement
-  la même largeur et hauteur.
-*/
-
+/* Même taille pour la loupe et le panier */
 .header-icon {
   width: 22px;
   height: 22px;
-
   padding: 0;
   margin: 0;
 
   border: 0;
   background: transparent;
-
   color: var(--ink);
-
-  cursor: pointer;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
   position: relative;
+  cursor: pointer;
 
+  font-size: 18px;
   line-height: 1;
 }
 
-/*
-  Les deux SVG ont exactement
-  la même taille.
-*/
-
-.header-icon svg {
-  width: 18px;
-  height: 18px;
-
-  display: block;
-
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 1.6;
-
-  stroke-linecap: round;
-  stroke-linejoin: round;
+/* Loupe */
+#searchBtn {
+  font-size: 19px;
 }
 
-/* Effet souris */
+/* Panier */
+.cart-icon {
+  position: relative;
+  font-size: 18px;
+}
 
-.header-icon:hover {
+/* Même couleur au repos */
+#searchBtn,
+.cart-icon {
+  color: var(--ink);
+}
+
+/* Effet au passage de la souris */
+#searchBtn:hover,
+.cart-icon:hover {
   color: var(--brown);
 }
 
-/* PANIER */
-
-.cart-icon {
-  position: relative;
-}
-
-/* Compteur panier */
-
+/* Compteur du panier */
 .cart-icon span {
   position: absolute;
-
-  top: -6px;
-  right: -7px;
+  top: -7px;
+  right: -8px;
 
   width: 15px;
   height: 15px;
