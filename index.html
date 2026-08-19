@@ -46,66 +46,26 @@
 
     <div class="header-actions">
 
-      <button
-        id="searchBtn"
-        class="header-icon"
-        aria-label="Rechercher"
-        type="button">
+  <button
+    id="searchBtn"
+    class="header-icon search-icon"
+    aria-label="Rechercher"
+    type="button"
+  >
+    <span>⌕</span>
+  </button>
 
-        <svg
-          class="search-svg"
-          viewBox="0 0 24 24"
-          aria-hidden="true">
+  <button
+    id="cartBtn"
+    class="header-icon cart-icon"
+    aria-label="Panier"
+    type="button"
+  >
+    <span class="cart-symbol">🛒</span>
+    <span id="cartCount">0</span>
+  </button>
 
-          <circle
-            cx="11"
-            cy="11"
-            r="6.5">
-          </circle>
-
-          <path
-            d="M16 16L21 21">
-          </path>
-
-        </svg>
-
-      </button>
-
-      <button
-        id="cartBtn"
-        class="header-icon cart-icon"
-        aria-label="Ouvrir le panier"
-        type="button">
-
-        <svg
-          class="cart-svg"
-          viewBox="0 0 24 24"
-          aria-hidden="true">
-
-          <path
-            d="M3 4H5L7.2 15.2C7.4 16.2 8.2 16.8 9.2 16.8H17.1C18 16.8 18.8 16.2 19.1 15.3L21 8H6">
-          </path>
-
-          <circle
-            cx="10"
-            cy="20"
-            r="1.2">
-          </circle>
-
-          <circle
-            cx="18"
-            cy="20"
-            r="1.2">
-          </circle>
-
-        </svg>
-
-        <span id="cartCount">0</span>
-
-      </button>
-
-    </div>
-
+</div>
   </header>
 
   <nav
