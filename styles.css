@@ -1124,3 +1124,150 @@ footer p {
     height: 17px;
   }
 }
+/* =========================================================
+   CORRECTION FINALE — LOUPE + PANIER MOBILE
+   ========================================================= */
+
+.header-actions {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 12px !important;
+  height: 100% !important;
+}
+
+.header-icon {
+  position: relative !important;
+
+  width: 24px !important;
+  height: 24px !important;
+
+  min-width: 24px !important;
+  min-height: 24px !important;
+
+  padding: 0 !important;
+  margin: 0 !important;
+
+  border: 0 !important;
+  outline: none !important;
+
+  background: transparent !important;
+
+  color: #241e1a !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  visibility: visible !important;
+  opacity: 1 !important;
+
+  cursor: pointer !important;
+}
+
+/* LOUPE */
+.search-icon {
+  font-size: 21px !important;
+  line-height: 24px !important;
+}
+
+.search-icon span {
+  display: block !important;
+  color: #241e1a !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* PANIER */
+.cart-icon {
+  font-size: 18px !important;
+  line-height: 24px !important;
+}
+
+.cart-symbol {
+  display: block !important;
+
+  font-family: Arial, sans-serif !important;
+  font-size: 18px !important;
+  line-height: 24px !important;
+
+  color: #241e1a !important;
+
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* COMPTEUR */
+.cart-icon #cartCount {
+  position: absolute !important;
+
+  top: -6px !important;
+  right: -7px !important;
+
+  width: 15px !important;
+  height: 15px !important;
+
+  min-width: 15px !important;
+
+  padding: 0 !important;
+  margin: 0 !important;
+
+  border-radius: 50% !important;
+
+  background: #b89457 !important;
+  color: #ffffff !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  font-family: Arial, sans-serif !important;
+  font-size: 8px !important;
+  font-weight: 700 !important;
+
+  line-height: 15px !important;
+
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* =========================================================
+   VERSION TÉLÉPHONE
+   ========================================================= */
+
+@media (max-width: 650px) {
+
+  .header-actions {
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+    margin-left: auto !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+  .header-icon {
+    display: flex !important;
+
+    width: 24px !important;
+    height: 24px !important;
+
+    min-width: 24px !important;
+    min-height: 24px !important;
+
+    visibility: visible !important;
+    opacity: 1 !important;
+
+    color: #241e1a !important;
+  }
+
+  .search-icon span {
+    font-size: 21px !important;
+    color: #241e1a !important;
+  }
+
+  .cart-symbol {
+    font-size: 18px !important;
+    color: #241e1a !important;
+  }
+}
