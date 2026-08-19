@@ -1,1 +1,461 @@
-`html <!doctype html> <html lang="fr"> <head> <meta charset="utf-8"> <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"> <meta name="description" content="TZ Luxe Blend — accessoires beauté premium." > <title>TZ Luxe Blend — Boutique</title> <link rel="stylesheet" href="styles.css"> </head> <body> <!-- BARRE SUPÉRIEURE --> <div class="topbar"> LIVRAISON RAPIDE & PAIEMENT À LA LIVRAISON </div> <!-- EN-TÊTE --> <header class="site-header"> <!-- MENU MOBILE --> <button class="menu-toggle" id="menuToggle" aria-label="Ouvrir le menu" type="button" > ☰ </button> <!-- LOGO --> <a class="logo" href="#accueil"> <img src="assets/logo.svg" alt="TZ Luxe Blend" > </a> <!-- NAVIGATION DESKTOP --> <nav class="desktop-nav" aria-label="Navigation principale" > <a href="#accueil"> Accueil </a> <a class="active" href="#boutique" > Boutique </a> <a href="#apropos"> À propos </a> <a href="#contact"> Contact </a> </nav> <!-- ACTIONS --> <div class="header-actions"> <!-- RECHERCHE --> <button id="searchBtn" class="header-icon" aria-label="Rechercher" type="button" > ⌕ </button> <!-- PANIER --> <button id="cartBtn" class="header-icon cart-icon" aria-label="Panier" type="button" > 🛒 <span id="cartCount">0</span> </button> </div> </header> <!-- MENU MOBILE --> <nav class="mobile-nav" id="mobileNav" aria-label="Menu mobile" > <a href="#accueil"> Accueil </a> <a href="#boutique"> Boutique </a> <a href="#apropos"> À propos </a> <a href="#contact"> Contact </a> </nav> <!-- CONTENU PRINCIPAL --> <main id="accueil"> <!-- HERO --> <section class="hero"> <p class="kicker"> L'EXCELLENCE DU BEAUTY CARE </p> <h1> Votre beauté,<br> <em>votre rituel.</em> </h1> <p class="hero-text"> Des accessoires premium pensés pour une routine élégante, pratique et durable. </p> <a class="hero-button" href="#boutique" > Découvrez la boutique </a> </section> <!-- BOUTIQUE --> <section class="shop" id="boutique" > <div class="shop-heading"> <p class="kicker"> TZ LUXE BLEND </p> <h2> BOUTIQUE </h2> <p class="subtitle"> Découvrez nos produits pensés pour sublimer votre beauté au quotidien. </p> </div> <!-- FILTRES --> <div class="filters" id="filters" > <button class="filter active" data-filter="all" type="button" > Tous </button> <button class="filter" data-filter="nettoyage" type="button" > Nettoyage </button> <button class="filter" data-filter="pinceaux" type="button" > Pinceaux </button> <button class="filter" data-filter="rangement" type="button" > Rangement </button> <button class="filter" data-filter="accessoires" type="button" > Accessoires </button> </div> <!-- PRODUITS --> <div class="products" id="products" > </div> </section> <!-- À PROPOS --> <section class="about" id="apropos" > <p class="kicker"> L'UNIVERS TZ </p> <h2> Luxe, beauté,<br> <em>confiance.</em> </h2> <p> Une sélection d'accessoires beauté premium pour accompagner chaque geste de votre routine avec élégance. </p> </section> <!-- CONTACT --> <section class="contact" id="contact" > <div> <p class="kicker"> UNE QUESTION ? </p> <h2> Parlons de votre<br> <em>commande.</em> </h2> </div> <a class="contact-button" href="https://wa.me/2250757432898" target="_blank" rel="noopener noreferrer" > WhatsApp </a> </section> </main> <!-- PIED DE PAGE --> <footer> <img src="assets/logo.svg" alt="TZ Luxe Blend" > <p> Luxe. Beauté. Confiance. </p> </footer> <!-- PANIER --> <aside class="cart-drawer" id="cartDrawer" aria-hidden="true" > <div class="cart-panel"> <!-- FERMER --> <button class="close-cart" id="closeCart" aria-label="Fermer le panier" type="button" > × </button> <p class="kicker"> TZ LUXE BLEND </p> <h2> Votre panier </h2> <!-- PRODUITS DU PANIER --> <div id="cartItems" class="cart-items" > </div> <!-- TOTAL --> <div class="cart-summary"> <span> SOUS-TOTAL </span> <strong id="cartTotal"> 0 FCFA </strong> </div> <!-- COMMANDE WHATSAPP --> <button id="checkout" class="checkout" type="button" > COMMANDE PASSEUR </button> <p class="cart-note"> Votre commande sera envoyée directement sur WhatsApp à la vendeuse. </p> </div> </aside> <!-- NOTIFICATION --> <div class="toast" id="toast" role="status" aria-live="polite" > </div> <!-- JAVASCRIPT --> <script src="app.js"></script> </body> </html>
+<!doctype html>
+<html lang="fr">
+
+<head>
+  <meta charset="utf-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, viewport-fit=cover"
+  >
+
+  <meta
+    name="description"
+    content="TZ Luxe Blend — accessoires beauté premium."
+  >
+
+  <title>TZ Luxe Blend — Boutique</title>
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+
+<body>
+
+  <!-- ==============================
+       BARRE SUPÉRIEURE
+  =============================== -->
+  <div class="topbar">
+    LIVRAISON RAPIDE &amp; PAIEMENT À LA LIVRAISON
+  </div>
+
+
+  <!-- ==============================
+       EN-TÊTE
+  =============================== -->
+  <header class="site-header">
+
+    <!-- Menu mobile -->
+    <button
+      class="menu-toggle"
+      id="menuToggle"
+      aria-label="Ouvrir le menu"
+      type="button"
+    >
+      ☰
+    </button>
+
+
+    <!-- Logo -->
+    <a
+      class="logo"
+      href="#accueil"
+      aria-label="TZ Luxe Blend - Accueil"
+    >
+      <img
+        src="assets/logo.svg"
+        alt="TZ Luxe Blend"
+      >
+    </a>
+
+
+    <!-- Navigation desktop -->
+    <nav
+      class="desktop-nav"
+      aria-label="Navigation principale"
+    >
+
+      <a href="#accueil">
+        Accueil
+      </a>
+
+      <a
+        href="#boutique"
+        class="active"
+      >
+        Boutique
+      </a>
+
+      <a href="#apropos">
+        À propos
+      </a>
+
+      <a href="#contact">
+        Contact
+      </a>
+
+    </nav>
+
+
+    <!-- Actions -->
+    <div class="header-actions">
+
+      <!-- Recherche -->
+      <button
+        id="searchBtn"
+        class="header-icon search-icon"
+        aria-label="Rechercher"
+        type="button"
+      >
+        ⌕
+      </button>
+
+
+      <!-- Panier -->
+      <button
+        id="cartBtn"
+        class="header-icon cart-icon"
+        aria-label="Ouvrir le panier"
+        type="button"
+      >
+        🛒
+
+        <span id="cartCount">
+          0
+        </span>
+      </button>
+
+    </div>
+
+  </header>
+
+
+  <!-- ==============================
+       MENU MOBILE
+  =============================== -->
+  <nav
+    class="mobile-nav"
+    id="mobileNav"
+    aria-label="Menu mobile"
+  >
+
+    <a href="#accueil">
+      Accueil
+    </a>
+
+    <a href="#boutique">
+      Boutique
+    </a>
+
+    <a href="#apropos">
+      À propos
+    </a>
+
+    <a href="#contact">
+      Contact
+    </a>
+
+  </nav>
+
+
+  <!-- ==============================
+       CONTENU PRINCIPAL
+  =============================== -->
+  <main id="accueil">
+
+
+    <!-- ==============================
+         HERO
+    =============================== -->
+    <section class="hero">
+
+      <p class="kicker">
+        L'EXCELLENCE DU BEAUTY CARE
+      </p>
+
+
+      <h1>
+        Votre beauté,<br>
+        <em>votre rituel.</em>
+      </h1>
+
+
+      <p class="hero-text">
+        Des accessoires premium pensés pour une routine
+        élégante, pratique et durable.
+      </p>
+
+
+      <a
+        class="hero-button"
+        href="#boutique"
+      >
+        Découvrez la boutique
+      </a>
+
+    </section>
+
+
+    <!-- ==============================
+         BOUTIQUE
+    =============================== -->
+    <section
+      class="shop"
+      id="boutique"
+    >
+
+      <!-- Titre -->
+      <div class="shop-heading">
+
+        <p class="kicker">
+          TZ LUXE BLEND
+        </p>
+
+
+        <h2>
+          BOUTIQUE
+        </h2>
+
+
+        <p class="subtitle">
+          Découvrez nos produits pensés pour sublimer
+          votre beauté au quotidien.
+        </p>
+
+      </div>
+
+
+      <!-- Filtres -->
+      <div
+        class="filters"
+        id="filters"
+      >
+
+        <button
+          class="filter active"
+          data-filter="all"
+          type="button"
+        >
+          Tous
+        </button>
+
+
+        <button
+          class="filter"
+          data-filter="nettoyage"
+          type="button"
+        >
+          Nettoyage
+        </button>
+
+
+        <button
+          class="filter"
+          data-filter="pinceaux"
+          type="button"
+        >
+          Pinceaux
+        </button>
+
+
+        <button
+          class="filter"
+          data-filter="rangement"
+          type="button"
+        >
+          Rangement
+        </button>
+
+
+        <button
+          class="filter"
+          data-filter="accessoires"
+          type="button"
+        >
+          Accessoires
+        </button>
+
+      </div>
+
+
+      <!-- Produits -->
+      <div
+        class="products"
+        id="products"
+      >
+        <!-- Les produits sont générés par app.js -->
+      </div>
+
+    </section>
+
+
+    <!-- ==============================
+         À PROPOS
+    =============================== -->
+    <section
+      class="about"
+      id="apropos"
+    >
+
+      <p class="kicker">
+        L'UNIVERS TZ
+      </p>
+
+
+      <h2>
+        Luxe, beauté,<br>
+        <em>confiance.</em>
+      </h2>
+
+
+      <p>
+        Une sélection d'accessoires beauté premium
+        pour accompagner chaque geste de votre routine
+        avec élégance.
+      </p>
+
+    </section>
+
+
+    <!-- ==============================
+         CONTACT
+    =============================== -->
+    <section
+      class="contact"
+      id="contact"
+    >
+
+      <div>
+
+        <p class="kicker">
+          UNE QUESTION ?
+        </p>
+
+
+        <h2>
+          Parlons de votre<br>
+          <em>commande.</em>
+        </h2>
+
+      </div>
+
+
+      <!-- Bouton WhatsApp -->
+      <a
+        class="contact-button"
+        href="https://wa.me/2250757432898"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        WhatsApp
+      </a>
+
+    </section>
+
+  </main>
+
+
+  <!-- ==============================
+       PIED DE PAGE
+  =============================== -->
+  <footer>
+
+    <img
+      src="assets/logo.svg"
+      alt="TZ Luxe Blend"
+    >
+
+
+    <p>
+      Luxe. Beauté. Confiance.
+    </p>
+
+  </footer>
+
+
+  <!-- ==============================
+       PANIER
+  =============================== -->
+  <aside
+    class="cart-drawer"
+    id="cartDrawer"
+    aria-hidden="true"
+  >
+
+    <div class="cart-panel">
+
+
+      <!-- Bouton fermer -->
+      <button
+        class="close-cart"
+        id="closeCart"
+        aria-label="Fermer le panier"
+        type="button"
+      >
+        ×
+      </button>
+
+
+      <p class="kicker">
+        TZ LUXE BLEND
+      </p>
+
+
+      <h2>
+        Votre panier
+      </h2>
+
+
+      <!-- Articles du panier -->
+      <div
+        id="cartItems"
+        class="cart-items"
+      >
+        <!-- Les articles sont ajoutés par app.js -->
+      </div>
+
+
+      <!-- Total -->
+      <div class="cart-summary">
+
+        <span>
+          SOUS-TOTAL
+        </span>
+
+
+        <strong id="cartTotal">
+          0 FCFA
+        </strong>
+
+      </div>
+
+
+      <!-- Commander -->
+      <button
+        id="checkout"
+        class="checkout"
+        type="button"
+      >
+        PASSER COMMANDE
+      </button>
+
+
+      <p class="cart-note">
+        Votre commande sera envoyée directement
+        sur WhatsApp à la vendeuse.
+      </p>
+
+    </div>
+
+  </aside>
+
+
+  <!-- ==============================
+       NOTIFICATION
+  =============================== -->
+  <div
+    class="toast"
+    id="toast"
+    role="status"
+    aria-live="polite"
+  ></div>
+
+
+  <!-- ==============================
+       JAVASCRIPT
+  =============================== -->
+  <script src="app.js"></script>
+
+</body>
+
+</html>
